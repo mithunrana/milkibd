@@ -704,6 +704,7 @@ class ProductController extends Controller
             'name' => 'required',
             'slug' => "required",
             'status' => 'required',
+            'order' => 'required',
         ]);
 
         $IsFeatured = 0;
@@ -719,6 +720,8 @@ class ProductController extends Controller
         $ProductCollectionObj->description = $request->description;
         $ProductCollectionObj->image = $request->imageurl;
         $ProductCollectionObj->status = $request->status;
+        $ProductCollectionObj->order = $request->order;
+        $ProductCollectionObj->is_featured = $IsFeatured;
         $ProductCollectionObj->save();
 
         return redirect('admin/product-collection')->with('message', 'Collection Successfully Added');
@@ -739,6 +742,7 @@ class ProductController extends Controller
             'name' => 'required',
             'slug' => "required",
             'status' => 'required',
+            'order' => 'required',
         ]);
 
         $IsFeatured = 0;
@@ -754,6 +758,8 @@ class ProductController extends Controller
         $ProductCollectionObj->description = $request->description;
         $ProductCollectionObj->image = $request->imageurl;
         $ProductCollectionObj->status = $request->status;
+        $ProductCollectionObj->order = $request->order;
+        $ProductCollectionObj->is_featured = $IsFeatured;
         $ProductCollectionObj->save();
 
         return redirect('admin/product-collection')->with('message', 'Collection Successfully Updated');

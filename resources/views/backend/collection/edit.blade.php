@@ -53,6 +53,11 @@
                                 <label>Description</label>
                                 <textarea class="form-control summernote-editor {{$errors->has('description') ? ' is-invalid' : ''}}" id="description" name="description" rows="4" placeholder="Enter ...">{{$GetCollectionData->description}}</textarea>
                             </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Order</label>
+                                <input type="number" class="form-control {{$errors->has('order') ? ' is-invalid' : ''}}" id="order"  name="order" value="{{$GetCollectionData->order}}">
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,6 @@ class CreateProductWithCollectionTable extends Migration
             $table->bigInteger('product_collection_id')->unsigned();
             $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('product_collection_id')->references('id')->on('product_collections')->onDelete('cascade')->onUpdate('cascade');
-            $table->tinyInteger('order')->nullable()->unsigned()->default(0);
             $table->timestamps();
         });
     }
