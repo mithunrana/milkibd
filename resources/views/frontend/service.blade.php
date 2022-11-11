@@ -16,7 +16,7 @@
 
 
     <!--Page Title-->
-    <section class="page-title centred" style="background-image: url(assets/images/background/page-title.jpg);">
+    <section class="page-title centred" style="padding:40px 0px;background-image: url({{asset('')}}frontend/assets/images/background/milki-icecream-background.webp);">
         <div class="auto-container">
             <div class="content-box">
                 <div class="title">
@@ -32,6 +32,7 @@
     <!--End Page Title-->
 
 
+
     <!-- service-section -->
     <section class="service-section sec-pad centred">
         <div class="auto-container">
@@ -40,7 +41,7 @@
                     <div class="service-block-one">
                         <div class="inner-box">
                             <div class="icon-box wow fadeInDown animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-3.png);"></div>
+                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
                                 <i class="icon-Ice-Cream"></i>
                             </div>
                             <div class="lower-content wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
@@ -55,7 +56,7 @@
                     <div class="service-block-one">
                         <div class="inner-box">
                             <div class="icon-box wow fadeInDown animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-3.png);"></div>
+                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
                                 <i class="icon-Bread"></i>
                             </div>
                             <div class="lower-content wow fadeInUp animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">
@@ -70,7 +71,7 @@
                     <div class="service-block-one">
                         <div class="inner-box">
                             <div class="icon-box wow fadeInDown animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-3.png);"></div>
+                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
                                 <i class="icon-Cake"></i>
                             </div>
                             <div class="lower-content wow fadeInUp animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">
@@ -85,7 +86,7 @@
                     <div class="service-block-one">
                         <div class="inner-box">
                             <div class="icon-box wow fadeInDown animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-3.png);"></div>
+                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
                                 <i class="icon-Donuts"></i>
                             </div>
                             <div class="lower-content wow fadeInUp animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
@@ -100,6 +101,211 @@
         </div>
     </section>
     <!-- service-section end -->
+
+
+    
+
+    <!-- specialmenu-section -->
+    <section class="specialmenu-section sec-pad" style="background: #bee0e3;">
+        <div class="auto-container">
+            <div class="sec-title centred">
+                <p>Customization</p>
+                <h2>Special Menu</h2>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                    <div class="special-menu-box wow fadeInLeft animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/shape/shape-7.png);"></div>
+                        <div class="border-shape" style="background-image: url({{asset('')}}frontend/assets/images/shape/shape-8.png);"></div>
+                        <div class="inner-box">
+                            <ul class="menu-list">
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>Ice Cream</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$50</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>Chocolate Crepes</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$60</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>Double Chocolate Pie</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$45</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>French Croissants</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$40</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                    <div class="special-menu-box wow fadeInRight animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/shape/shape-7.png);"></div>
+                        <div class="border-shape" style="background-image: url({{asset('')}}frontend/assets/images/shape/shape-8.png);"></div>
+                        <div class="inner-box">
+                            <ul class="menu-list">
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>Cafe Latte</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$50</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>Chocolate Crepes</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$60</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>Double Chocolate Pie</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$45</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-menu">
+                                        <div class="text">
+                                            <h4>French Croissants</h4>
+                                            <div class="line"></div>
+                                            <div class="price-box">
+                                                <span>$40</span>
+                                            </div>
+                                        </div>
+                                        <p>Fresh brewed coffee</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- specialmenu-section end -->
+
+
+
+    <!-- shop-section -->
+    <section class="shop-section">
+        <div class="auto-container">
+            <div class="sec-title">
+                <p>Our Shop</p>
+                <h2>Our all Delicious <br />Products.</h2>
+            </div>
+            <div class="three-item-carousel owl-carousel owl-theme owl-dots-none nav-style-one centred">
+                <div class="shop-block-one">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="{{asset('')}}frontend/assets/images/resource/shop/shop-1.jpg" alt="">
+                        </figure>
+                        <div class="lower-content">
+                            <span class="price-box">$100</span>
+                            <h3><a href="shop-details.html">Vanilla Ice Cream</a></h3>
+                            <ul class="rating clearfix">
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                            </ul>
+                            <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-block-one">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="{{asset('')}}frontend/assets/images/resource/shop/shop-2.jpg" alt="">
+                        </figure>
+                        <div class="lower-content">
+                            <span class="price-box">$70</span>
+                            <h3><a href="shop-details.html">Slice Super Cake</a></h3>
+                            <ul class="rating clearfix">
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                            </ul>
+                            <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-block-one">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="{{asset('')}}frontend/assets/images/resource/shop/shop-3.jpg" alt="">
+                        </figure>
+                        <div class="lower-content">
+                            <span class="price-box">$80</span>
+                            <h3><a href="shop-details.html">Cone Ice Cream</a></h3>
+                            <ul class="rating clearfix">
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                                <li><i class="icon-Star"></i></li>
+                            </ul>
+                            <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- shop-section end -->
+
 
 
 @endsection()

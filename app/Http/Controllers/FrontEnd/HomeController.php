@@ -21,6 +21,7 @@ use App\Models\OrderProduct;
 use App\Models\Order;
 use App\Models\SliderItem;
 use App\Models\Slider;
+use App\Models\Service;
 use Session;
 
 class HomeController extends Controller
@@ -39,10 +40,27 @@ class HomeController extends Controller
         $data['OrderProducts'] = OrderProduct::orderBy('id','DESC')->skip(0)->take(3)->get()->unique('product_id');
         $data['OrderProducts2'] = OrderProduct::orderBy('id','DESC')->skip(3)->take(3)->get()->unique('product_id');
 
+        $data['GetServise'] = Service::where('status','Published')->orderBy('order','ASC')->skip(0)->take(4)->get();
+
         $SlideObj = Slider::where('key','home-slider')->first();
         $data['SlideItems'] =  SliderItem::where('slider_id',$SlideObj->id)->orderBy('order','DESC')->get();
 
-        
         return view('frontend.index',$data);
     }
+
+
+    public function about(){
+        return view('frontend.about');
+    }
+
+
+    public function service(){
+        return view('frontend.service');
+    }
+
+
+    public function login(){
+        return view('frontend.login');
+    }
+    
 }

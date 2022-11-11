@@ -21,6 +21,7 @@
 <link href="{{asset('')}}frontend/assets/css/jquery.fancybox.min.css" rel="stylesheet">
 <link href="{{asset('')}}frontend/assets/css/animate.css" rel="stylesheet">
 <link href="{{asset('')}}frontend/assets/css/color.css" rel="stylesheet">
+<link href="{{asset('')}}frontend/assets/css/jquery-ui.css" rel="stylesheet">
 <link href="{{asset('')}}frontend/assets/css/nice-select.css" rel="stylesheet">
 <link href="{{asset('')}}frontend/assets/css/global.css" rel="stylesheet">
 <link href="{{asset('')}}frontend/assets/css/style.css" rel="stylesheet">
@@ -151,10 +152,11 @@
     <script src="{{asset('')}}frontend/assets/js/scrollbar.js"></script>
     <script src="{{asset('')}}frontend/assets/js/jquery.nice-select.min.js"></script>
     <script src="{{asset('')}}frontend/assets/js/nav-tool.js"></script>
+    <script src="{{asset('')}}frontend/assets/js/jquery-ui.js"></script>
+    <script src="{{asset('')}}frontend/assets/js/bxslider.js"></script>
 
     <!-- main-js -->
     <script src="{{asset('')}}frontend/assets/js/script.js"></script>
-
 
     <!-- Toastr -->
     <script src="{{ asset('defaults/toastr/toastr.min.js') }}"></script>
@@ -177,6 +179,12 @@
                     break;
             }
         @endif
+
+        $('.smallimage').click(function(){
+            $Imageurl = $(this).attr('data-image');
+            $('.thigobximage').attr('href',$Imageurl);
+            $('.thigoshowimage').attr('src',$Imageurl);
+        });
     </script>
 
 </body>

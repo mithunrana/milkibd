@@ -4,7 +4,7 @@
         <div style="background: #e3a087;" class="header-lower">
             <div class="outer-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="index.html"><img src="https://igloobd.com/" alt=""></a></figure>
+                    <figure class="logo"><a href="index.html"><img src="{{asset('')}}frontend/assets/images/test2.png" alt=""></a></figure>
                 </div>
                 <div class="menu-area">
                     <!--Mobile Navigation Toggler-->
@@ -16,8 +16,8 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="dropdown"><a href="index.html">Shop</a>
+                                <li><a href="{{asset('')}}">Home</a></li>
+                                <li class="dropdown"><a href="{{route('products')}}">Products</a>
                                     <ul>
                                         <li><a href="shop-1.html">Shop Page 01</a></li>
                                         <li><a href="shop-2.html">Shop Page 02</a></li>
@@ -26,9 +26,9 @@
                                         <li><a href="checkout.html">Checkout Page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="index.html">Service</a></li>
-                                <li><a href="index.html">About Us</a></li>
-                                <li><a href="index.html">Contact Us</a></li>
+                                <li><a href="{{route('service')}}">Service</a></li>
+                                <li><a href="{{route('about.us')}}">About Us</a></li>
+                                <li><a href="{{route('contact.us')}}">Contact Us</a></li>
                                 <li><a href="contact.html">Job Circular</a></li>   
                             </ul>
                         </div>
@@ -37,7 +37,7 @@
                 <ul class="menu-right-content clearfix">
                     <li class="search-box-outer">
                         <div class="dropdown">
-                            <button class="search-box-btn" style="background-image: url(assets/images/icons/icon-bg-1.png);" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-Search"></i></button>
+                            <button class="search-box-btn" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-Search"></i></button>
                             <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu3">
                                 <div class="form-container">
                                     <form method="post" action="blog.html">
@@ -51,12 +51,12 @@
                         </div>
                     </li>
                     <li class="user-btn">
-                        <a href="index.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                        <a href="index.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Profile"></i>
                         </a>
                     </li>
                     <li class="cart-btn">
-                        <a href="shop-1.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                        <a href="shop-1.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Bag"></i>
                             <span>3</span>
                         </a>
@@ -69,7 +69,7 @@
         <div class="sticky-header">
             <div class="outer-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="index.html"><img src="assets/images/small-logo.png" alt=""></a></figure>
+                    <figure class="logo"><a href="index.html"><img src="{{asset('')}}frontend/assets/images/test2.png" alt=""></a></figure>
                 </div>
                 <div class="menu-area">
                     <nav class="main-menu clearfix">
@@ -79,7 +79,7 @@
                 <ul class="menu-right-content clearfix">
                     <li class="search-box-outer">
                         <div class="dropdown">
-                            <button class="search-box-btn" style="background-image: url(assets/images/icons/icon-bg-1.png);" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-Search"></i></button>
+                            <button class="search-box-btn" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-Search"></i></button>
                             <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu4">
                                 <div class="form-container">
                                     <form method="post" action="blog.html">
@@ -93,12 +93,12 @@
                         </div>
                     </li>
                     <li class="user-btn">
-                        <a href="index.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                        <a href="index.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Profile"></i>
                         </a>
                     </li>
                     <li class="cart-btn">
-                        <a href="shop-1.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                        <a href="shop-1.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Bag"></i>
                             <span>3</span>
                         </a>

@@ -18,6 +18,17 @@ use App\Models\Reviews;
 use Auth;
 class ProductController extends Controller
 {
+    public function index(){
+        $ProductList = Products::where('status','Published')->paginate(2);
+        return view('frontend.products',compact('ProductList'));
+    }
+
+
+    public function categoryWiseProducts($url){
+        $CategoryObj = ProductCategory::where('permalink',$url)->first();
+        return view('frontend.category-wise-products',compact('CategoryObj'));
+    }
+
     public function productView($url){
         $Product = Products::where('permalink',$url)->first();
         $ProductVariation = 0;
@@ -29,7 +40,7 @@ class ProductController extends Controller
         }
         $TotalReview  = Reviews::where('product_id',$Product->id)->count();
         $ProductReviews = Reviews::where('product_id',$Product->id)->get();
-        return view('frontend.product.product-view',compact('Product','ProductVariation','ProductVariationObj','TotalReview','ProductReviews'));
+        return view('frontend.product-view',compact('Product','ProductVariation','ProductVariationObj','TotalReview','ProductReviews'));
     }
 
     public function ratingSubmit(Request $request){

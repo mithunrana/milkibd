@@ -17,162 +17,39 @@
                     <div class="project-tab">
                         <div class="tab-btn-box clearfix">
                             <ul class="project-tab-btns project-btn tab-btns clearfix post-filter pull-right">
-                                <li class="p-tab-btn active-btn" data-tab="#p-tab-1">Ice Cream</li>
-                                <li class="p-tab-btn" data-tab="#p-tab-2">Pancakes</li>
-                                <li class="p-tab-btn" data-tab="#p-tab-3">Fresh bread</li>
-                                <li class="p-tab-btn" data-tab="#p-tab-4">Muffin</li>
+                                @foreach($ProductFeatures as $Feature)
+                                    <li class="p-tab-btn @if($loop->index == 0) active-btn @endif" data-tab="#p-tab-{{$Feature->id}}">{{$Feature->name}}</li>
+                                @endforeach()
                             </ul>
                         </div>
                         <div class="tabs-content-inner">
                             <div class="p-tabs-content">
-                                <div class="p-tab active-tab" id="p-tab-1">
-                                    <div class="project-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
+                                @foreach($ProductFeatures as $Feature)
+                                    <div class="p-tab @if($loop->index == 0) active-tab @endif" id="p-tab-{{$Feature->id}}">
+                                        <div class="project-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
+                                            @foreach($Feature->products as $Product)
+                                                @if($Product->productImages->count() > 0)
+                                                    @foreach($Product->productImages as $Image)
+                                                        <div class="project-block-one">
+                                                            <div class="inner-box">
+                                                                <figure class="image-box">
+                                                                    <img src="{{asset('')}}{{$Image->urlwithoutextension }}{{$ImageSize[500]}}.{{$Image->extension }}" alt="">
+                                                                </figure>
+                                                                <div class="lower-content">
+                                                                    <div class="view-btn">
+                                                                        <a href="{{asset('')}}{{$Image->urlwithoutextension }}{{$ImageSize[500]}}.{{$Image->extension }}" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a>
+                                                                    </div>
+                                                                    <h3><a href="{{asset('')}}{{$Product->permalink}}">{{$Product->name}}</a></h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @break
+                                                    @endforeach
+                                                @endif
+                                            @endforeach()
                                         </div>
                                     </div>
-                                </div>
-                                <div class="p-tab" id="p-tab-2">
-                                    <div class="project-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="p-tab" id="p-tab-3">
-                                    <div class="project-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="p-tab" id="p-tab-4">
-                                    <div class="project-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-1.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-2.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-block-one">
-                                            <div class="inner-box">
-                                                <figure class="image-box">
-                                                    <img src="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" alt="">
-                                                </figure>
-                                                <div class="lower-content">
-                                                    <div class="view-btn"><a href="{{asset('')}}frontend/assets/images/gallery/project-3.jpg" class="lightbox-image" data-fancybox="gallery"><i class="icon-Zoom"></i></a></div>
-                                                    <h3><a href="index.html">Baking Breads</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
+                                @endforeach()
                             </div>           
                         </div>
                     </div>

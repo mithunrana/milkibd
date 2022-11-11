@@ -41,6 +41,15 @@ Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
     Route::get('/admin/product-category-edit/{categoryid}','ProductController@productsCategoryEdit')->name('dashboard.product.category.edit');
     Route::post('/admin/product-category-edit/{categoryid}','ProductController@productCategoryUpdate')->name('dashboard.product.category.update');
 
+
+
+    Route::get('/admin/service','ServiceController@index')->name('dashboard.service');
+    Route::get('/admin/service-add','ServiceController@add')->name('dashboard.service.add');
+    Route::post('/admin/service-store','ServiceController@store')->name('dashboard.service.store');
+    Route::get('/admin/service-edit/{id}','ServiceController@edit')->name('dashboard.service.edit');
+    Route::post('/admin/service-edit/{id}','ServiceController@update')->name('dashboard.service.update');
+    Route::get('/admin/service-delete/{id}','ServiceController@delete')->name('dashboard.service.delete');
+
     
 
     Route::get('/admin/product-label','ProductController@productsLabelManage')->name('dashboard.product.label');
@@ -121,6 +130,25 @@ Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
     Route::get('/admin/slider-item-delete/{id}','SetupMasterController@sliderItemDelete')->name('dashboard.slider.item.delete');
 
 
+    
+    Route::get('/admin/menubar','MenubarController@index')->name('dashboard.menubar');
+    Route::get('/admin/menubar-add','MenubarController@add')->name('dashboard.menubar.add');
+    Route::post('/admin/menubar-store','MenubarController@store')->name('dashboard.menubar.store');
+    Route::get('/admin/menubar-edit/{id}','MenubarController@edit')->name('dashboard.menubar.edit');
+    Route::post('/admin/menubar-update/{id}','MenubarController@update')->name('dashboard.menubar.update');
+    Route::get('/admin/menubar-delete/{id}','MenubarController@delete')->name('dashboard.menubar.delete');
+
+
+    Route::post('/admin/menubar-item-store','MenubarController@menuItemStore')->name('dashboard.menubar.item.store');
+    Route::post('/admin/menubar-item-update/{id}','MenubarController@menuItemUpdate')->name('dashboard.menubar.item.update');
+    Route::get('/admin/menubar-item-delete/{id}','MenubarController@menuItemDelete')->name('dashboard.menubar.item.delete');
+
+
+    Route::get('/admin/reviews','ReviewController@index')->name('dashboard.review');
+    Route::get('/admin/review/edit/{id}','ReviewController@edit')->name('dashboard.review.edit');
+    Route::post('/admin/review/update/{id}','ReviewController@update')->name('dashboard.review.update');
+    Route::get('/admin/review/delete/{id}','ReviewController@delete')->name('dashboard.slider.item.delete');
+
 
 
     //Route::get('/admin/media','MediaController@getMedia')->name('get.media');
@@ -154,6 +182,16 @@ Route::group(['namespace'=>'App\Http\Controllers\FrontEnd'], function(){
 
     Route::get('/product-rating','ProductController@ratingSubmit')->name('product.rating');
 
+    Route::get('/service','Homecontroller@service')->name('service');
+    Route::get('/about','Homecontroller@about')->name('about.us');
+
+    Route::get('/contact','ContactController@index')->name('contact.us');
+    Route::post('/contact','ContactController@sendMail')->name('contact.us.mail');
+
+    Route::get('/customer/login','Homecontroller@login')->name('customer.login');
+
+    Route::get('/products','ProductController@index')->name('products');
+    Route::get('/products/{url}','ProductController@categoryWiseProducts')->name('category.products');
     Route::get('/{url}','ProductController@productView')->name('productview');
 });
 

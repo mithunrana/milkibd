@@ -17,7 +17,7 @@ class CreateProductCollectionsTable extends Migration
             $table->id();
             $table->string('name', 191);
             $table->string('slug', 191);
-            $table->string('description', 400)->nullable()->default(null);
+            $table->longText('description', 400)->nullable()->default(null);
             $table->string('image', 255)->nullable()->default(null);
             $table->string('status', 60)->default('published');
             $table->tinyInteger('order')->nullable()->unsigned()->default(0);

@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\ProductBrand;
 use App\Models\ProductCategory;
 use App\Models\Products;
+use App\Models\Reviews;
 use App\Models\ProductLabel;
 use App\Models\ProductCollection;
 use App\Models\ProductTax;
@@ -56,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
             $GetAllProductCategory = ProductCategory::orderBy('id', 'DESC')->get();
             $GetAllActiveProduct = Products::where('status','published')->get();
             $GetAllProductCollection = ProductCollection::orderBy('id', 'DESC')->get();
+            $ProductFeatures = ProductCollection::orderBy('order', 'ASC')->skip(0)->take(3)->get();
             $GetAllProductLabel = ProductLabel::orderBy('id', 'DESC')->get();
             $GetAllProductTaxes  = ProductTax::orderBy('id', 'DESC')->get();
             $GetAllTags = ProductTag::orderBy('id', 'DESC')->get();
@@ -63,6 +65,8 @@ class AppServiceProvider extends ServiceProvider
             $CurrencyList = Currency::orderBy('id', 'DESC')->get();
             $CurrencyObj = Currency::where('is_default',1)->first();
             $ProductCollections = ProductCollection::where('status','Published')->get();
+            $GetReviews = Reviews::where('status','Published')->orderBy('star', 'ASC')->skip(0)->take(10)->get();
+            $FeaturedPoducts = Products::where('status','published')->where('is_featured',1)->orderBy('id', 'DESC')->skip(0)->take(4)->get();
 
 
             $ImageSize = array("150"=>"-150x150", "500"=>"-500x500", "540" => "-540x600");
@@ -80,9 +84,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('ImageSize',$ImageSize);
             $view->with('CurrencyList',$CurrencyList);
             $view->with('ProductCollections',$ProductCollections);
-
-
-
+            $view->with('ProductFeatures',$ProductFeatures);
+            $view->with('TopTenReview',$GetReviews);
+            $view->with('FeaturedPoducts',$FeaturedPoducts);
             $view->with('CurrencyObj',$CurrencyObj);
         });
     }

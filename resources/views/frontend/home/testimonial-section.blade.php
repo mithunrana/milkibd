@@ -1,5 +1,5 @@
     <!-- testimonial-section -->
-    <section class="testimonial-section sec-pad" style="background-image: url({{asset('')}}frontend/assets/images/background/testimonial-1.jpg);">
+    <!--<section class="testimonial-section sec-pad" style="background-image: url({{asset('')}}frontend/assets/images/background/testimonial-1.jpg);">
         <figure class="image-layer wow slideInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms"><img src="{{asset('')}}frontend/assets/images/resource/testimonial-1.png" alt=""></figure>
         <div class="auto-container">
             <div class="inner-box">
@@ -47,5 +47,37 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!-- testimonial-section end -->
+
+    <!-- testimonial-style-two -->
+<section class="testimonial-style-two centred" style="background-image: url({{asset('')}}frontend/assets/images/background/testimonial-1.jpg);">
+    <div class="pattern-layer">
+        <div class="pattern-1" style="background-image: url(assets/images/shape/shape-9.png);"></div>
+        <div class="pattern-2" style="background-image: url(assets/images/shape/shape-10.png);"></div>
+    </div>
+    <div class="auto-container">
+        <div class="inner-box">
+            <div class="sec-title">
+                <p>Testimonials</p>
+                <h2>What Our Customer <br />Say?</h2>
+            </div>
+            <div class="single-item-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
+                @foreach($TopTenReview as $Review)
+                    <div class="testimonial-block-one">
+                        <div class="icon-box" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-5.png);">
+                            <i class="icon-Quote"></i>
+                        </div>
+                        <div class="text">
+                            <p>{{$Review->comment}}</p>
+                        </div>
+                        <div class="author-info">
+                            <h4>{{$Review->Customer->name}}</h4>
+                        </div>
+                    </div>
+                @endforeach()
+            </div>
+        </div>
+    </div>
+</section>
+<!-- testimonial-style-two end -->

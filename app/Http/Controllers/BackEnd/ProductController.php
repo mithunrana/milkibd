@@ -42,6 +42,7 @@ class ProductController extends Controller
 
     public function productStore(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'permalink' => 'required',
@@ -50,8 +51,10 @@ class ProductController extends Controller
 
         $images = array();
         if ($request->images) {
-            //$images = '["'.implode('","',$request->images).'"]';
-            $images = implode('"', $request->images);
+            foreach($request->images as $GetImage){
+                $images = $GetImage;
+                break;
+            }
         } else {
             $images = '';
         }
@@ -300,19 +303,21 @@ class ProductController extends Controller
 
     public function productUpdate(Request $request,$id)
     {
-        $ProductObj = Products::findOrFail($id);
-
         $this->validate($request, [
             'name' => 'required',
             'permalink' => "required|unique:products,permalink,$id",
             'tax_id' => 'required',
         ]);
 
+        $ProductObj = Products::findOrFail($id); 
         $VariationCount = ProductVariation::where('products_id',$id)->count();
+
         $images = array();
         if ($request->images) {
-            //$images = '["'.implode('","',$request->images).'"]';
-            $images = implode('"', $request->images);
+            foreach($request->images as $GetImage){
+                $images = $GetImage;
+                break;
+            }
         } else {
             $images = '';
         }
@@ -547,6 +552,7 @@ class ProductController extends Controller
         } else {
             $IsFeatured = 0;
         }
+        
         $ProductBrandObj = new ProductCategory();
         $ProductBrandObj->name = $request->name;
         $ProductBrandObj->permalink = $request->permalink;

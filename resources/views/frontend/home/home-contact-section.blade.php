@@ -1,5 +1,5 @@
     <!-- contact-section -->
-    <section class="contact-section sec-pad" style="background-image: url({{asset('')}}frontend/assets/images/background/contact-1.jpg);">
+    <section class="contact-section sec-pad" >
         <div class="auto-container">
             <div class="sec-title centred">
                 <p>Contact us</p>

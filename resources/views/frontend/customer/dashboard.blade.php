@@ -1,192 +1,103 @@
 @extends('frontend.master')
 
-@section('home-header')
-    @include('frontend.common.home-header')
+
+@section('product-sidebar')
+    @include('frontend.common.product-sidebar')
 @endsection()
 
 
-@section('category-and-menu-section')
-    @include('frontend.common.close-category-menu')
+@section('main-header')
+    @include('frontend.common.main-header')
 @endsection()
 
 
-@section('bread-crumb')
-<!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section bg_gray page-title-mini">
-    <div class="custom-container"><!-- STRART CONTAINER -->
-        <div class="row align-items-center">
-            <div class="col-md-12">
-                <ol class="breadcrumb justify-content-md-start">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active">Product Detail</li>
-                </ol>
+
+@section('main-content-section')
+
+    <!--Page Title-->
+    <section class="page-title centred" style="padding: 40px 0px;background-image: url({{asset('')}}frontend/assets/images/background/milki-icecream-background.webp);">
+        <div class="auto-container">
+            <div class="content-box">
+                <div class="title">
+                    <h1>My Account</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{asset('')}}">Home</a></li>
+                    <li><a href="{{asset('')}}">Customer Login</a></li>
+                </ul>
             </div>
         </div>
-    </div><!-- END CONTAINER-->
-</div>
-<!-- END SECTION BREADCRUMB -->
-@endsection()
+    </section>
+    <!--End Page Title-->
 
 
-@section('main-content')
-<div class="section">
-	<div class="custom-container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4">
-                <div class="dashboard_menu">
-                    <ul class="nav nav-tabs flex-column" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true"><i class="ti-layout-grid2"></i>Dashboard</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Orders</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="false"><i class="ti-location-pin"></i>My Address</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="account-detail-tab" data-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="false"><i class="ti-id-badge"></i>Account details</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{ route('customer.logout') }}"><i class="ti-lock"></i>Logout</a>
-                      </li>
-                    </ul>
+    <!-- contact-section -->
+    <section class="contact-section alternet-2 sec-pad" style="background-image: url(assets/images/background/contact-3.jpg);">
+        <div style="max-width: 800px;" class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-6 col-sm-12 info-column">
+                    <div class="contact-info-inner">
+                        <div class="single-box">
+                            <h3>Opening hours</h3>
+                            <ul class="list clearfix"> 
+                                <li>Daily: 9.30 AM–6.00 PM</li>
+                                <li>Sunday & Holidays: Closed</li>
+                            </ul>
+                        </div>
+                        <div class="single-box">
+                            <h3>Contact info</h3>
+                            <ul class="list clearfix"> 
+                                <li>77408 Satterfield Motorway Suite <br />469 New Antonetta, BC K3L6P6</li>
+                                <li><a href="mailto:example@info.com">example@info.com</a></li>
+                                <li><a href="tel:6174959400326">(617) 495-9400-326</a></li>
+                            </ul>
+                        </div>
+                        <div class="single-box">
+                            <h3>Social contact</h3>
+                            <ul class="social-links clearfix">
+                                <li><a href="contact.html"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="contact.html"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="contact.html"><i class="fab fa-vimeo-v"></i></a></li>
+                                <li><a href="contact.html"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12 form-column">
+                    <div class="form-inner">
+                        <h3>Drop us a line</h3>
+                        <form method="post" action="sendemail.php" id="contact-form" class="default-form"> 
+                            <div class="row clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                    <input type="text" name="username" placeholder="Your Name *" required="">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                    <input type="email" name="email" placeholder="Your Email *" required="">
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                    <input type="text" name="phone" required="" placeholder="Your Phone">
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                    <input type="text" name="subject" required="" placeholder="Subject">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                    <textarea name="message" placeholder="Your Message ..."></textarea>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                                    <button class="theme-btn-one" type="submit" name="submit-form">Submit Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-md-8">
-                <div class="tab-content dashboard_content">
-                  	<div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                    	<div class="card">
-                        	<div class="card-header">
-                                <h3>Dashboard</h3>
-                            </div>
-                            <div class="card-body">
-                    			<p>From your account dashboard. you can easily check &amp; view your <a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent orders</a>, manage your <a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping and billing addresses</a> and <a href="javascript:void(0);" onclick="$('#account-detail-tab').trigger('click')">edit your password and account details.</a></p>
-                            </div>
-                        </div>
-                  	</div>
-                  	<div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                    	<div class="card">
-                        	<div class="card-header">
-                                <h3>Orders</h3>
-                            </div>
-                            <div class="card-body">
-                    			<div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Order</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Total</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#1234</td>
-                                                <td>March 15, 2020</td>
-                                                <td>Processing</td>
-                                                <td>$78.00 for 1 item</td>
-                                                <td><a href="#" class="btn btn-fill-out btn-sm">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2366</td>
-                                                <td>June 20, 2020</td>
-                                                <td>Completed</td>
-                                                <td>$81.00 for 1 item</td>
-                                                <td><a href="#" class="btn btn-fill-out btn-sm">View</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                  	</div>
-					<div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
-                    	<div class="row">
-                        	<div class="col-lg-6">
-                                <div class="card mb-3 mb-lg-0">
-                                    <div class="card-header">
-                                        <h3>Billing Address</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
-                                        <p>New York</p>
-                                        <a href="#" class="btn btn-fill-out">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3>Shipping Address</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
-                                        <p>New York</p>
-                                        <a href="#" class="btn btn-fill-out">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-					</div>
-                    <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
-						<div class="card">
-                        	<div class="card-header">
-                                <h3>Account Details</h3>
-                            </div>
-                            <div class="card-body">
-                    			<p>Already have an account? <a href="#">Log in instead!</a></p>
-                                <form method="post" name="enq">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                        	<label>First Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="name" type="text">
-                                         </div>
-                                         <div class="form-group col-md-6">
-                                        	<label>Last Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="phone">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Display Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="dname" type="text">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Email Address <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="email" type="email">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Current Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="password" type="password">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>New Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="npassword" type="password">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Confirm Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="cpassword" type="password">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+        </div>
+    </section>
+    <!-- contact-section end -->
+
 @endsection()
-
-
 
 
 @section('footersection')
-    @include('frontend.common.home-footer')
+    @include('frontend.common.footer')
 @endsection()

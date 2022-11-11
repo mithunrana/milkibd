@@ -1,81 +1,75 @@
 @extends('frontend.master')
 
-@section('home-header')
-    @include('frontend.common.home-header')
+
+@section('product-sidebar')
+    @include('frontend.common.product-sidebar')
 @endsection()
 
 
-@section('category-and-menu-section')
-    @include('frontend.common.close-category-menu')
+@section('main-header')
+    @include('frontend.common.main-header')
 @endsection()
 
 
-@section('bread-crumb')
-<!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section bg_gray page-title-mini">
-    <div class="custom-container"><!-- STRART CONTAINER -->
-        <div class="row align-items-center">
-            <div class="col-md-12">
-                <ol class="breadcrumb justify-content-md-start">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active">Product Detail</li>
-                </ol>
+
+@section('main-content-section')
+
+    <!--Page Title-->
+    <section class="page-title centred" style="padding: 40px 0px;background-image: url({{asset('')}}frontend/assets/images/background/milki-icecream-background.webp);">
+        <div class="auto-container">
+            <div class="content-box">
+                <div class="title">
+                    <h1>My Account</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{asset('')}}">Home</a></li>
+                    <li><a href="{{asset('')}}">Customer Login</a></li>
+                </ul>
             </div>
         </div>
-    </div><!-- END CONTAINER-->
-</div>
-<!-- END SECTION BREADCRUMB -->
-@endsection()
+    </section>
+    <!--End Page Title-->
 
 
-@section('main-content')
-<div class="login_register_wrap section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 col-md-10">
-                <div class="login_wrap">
-            		<div class="padding_eight_all bg-white">
-                        <div class="heading_s1">
-                            <h3>Login</h3>
-                        </div>
-                        <form action="{{ route('customer.login.store') }}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <span class="text-danger">@error('email'){{ $message }}@enderror</span>
-                                <input type="text" required="" value="{{old('email')}}" class="form-control" name="email" placeholder="Your Email">
-                            </div>
-                            <div class="form-group">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <input class="form-control" required="" type="password" name="password" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-fill-out btn-block" name="login">Log in</button>
+    <!-- contact-section -->
+    <section class="contact-section alternet-2 sec-pad" style="background-image: url({{asset('')}}frontend/assets/images/background/milki-ice-cream-background.jpg);">
+        <div style="max-width: 720px;" class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 form-column">
+                    <div class="form-inner">
+                        <h2 style="padding-bottom:10px;">Login</h2>
+                        <form method="POST" action="{{ route('customer.login.store') }}" id="contact-form" class="default-form">
+                            @csrf 
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
+                                    <input class="{{$errors->has('email') ? ' is-invalid' : ''}}" type="email" name="email" placeholder="Your Email *" required="">
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                    @if ($errors->has('password'))
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                    @endif
+                                    <input class="{{$errors->has('name') ? ' is-invalid' : ''}}" type="password" name="password" placeholder="Password" required="">
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                                    <button class="theme-btn-one" type="submit" name="submit-form">Login</button>
+                                </div>
                             </div>
                         </form>
-                        <div class="different_login">
-                            <span> or</span>
-                        </div>
-                        <ul class="btn-login list_none text-center">
-                            <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
-                            <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
-                        </ul>
-                        <div class="form-note text-center">Don't Have an Account? <a href="signup.html">Sign up now</a></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- contact-section end -->
+
 @endsection()
 
 
-
-
 @section('footersection')
-    @include('frontend.common.home-footer')
+    @include('frontend.common.footer')
 @endsection()

@@ -2717,6 +2717,7 @@ div#mCSB_1_container{
 
 .default-form .form-group input[type='text'],
 .default-form .form-group input[type='email'],
+.default-form .form-group input[type='password'],
 .default-form .form-group textarea{
   position: relative;
   display: block;
@@ -3545,7 +3546,7 @@ div#mCSB_1_container{
 .testimonial-style-two{
   position: relative;
   width: 100%;
-  padding: 148px 0px 393px 0px;
+  padding: 148px 0px 50px 0px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

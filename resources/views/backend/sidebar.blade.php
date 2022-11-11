@@ -28,6 +28,17 @@
               </p>
             </a>
           </li>
+          
+          <li class="nav-item">
+            <a href="{{route('dashboard.review')}}" class="nav-link">
+            &nbsp <i class="far fa-comment-dots"></i> &nbsp
+              <p>
+                Testimonials
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -166,6 +177,16 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{asset('')}}admin/service" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Service
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -210,51 +231,8 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Timeline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/ribbons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
+                <a href="{{route('dashboard.menubar')}}" class="nav-link">
+                  <p>&nbsp Menubar</p>
                 </a>
               </li>
             </ul>

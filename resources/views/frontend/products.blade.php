@@ -16,7 +16,7 @@
 
 
 <!--Page Title-->
-<section class="page-title centred" style="background-image: url(assets/images/background/page-title.jpg);">
+<section class="page-title centred" style="background-image: url({{asset('')}}frontend/assets/images/background/page-title.jpg);">
     <div class="auto-container">
         <div class="content-box">
             <div class="title">
@@ -52,13 +52,9 @@
                         </div>
                         <div class="widget-content">
                             <ul class="categories-list clearfix">
-                                <li><a href="blog-details.html">Coffee</a></li>
-                                <li><a href="blog-details.html">Pastry Cake</a></li>
-                                <li><a href="blog-details.html">Birthday Cake</a></li>
-                                <li><a href="blog-details.html">Sandwiches</a></li>
-                                <li><a href="blog-details.html">Donuts Cake</a></li>
-                                <li><a href="blog-details.html">Bargar</a></li>
-                                <li><a href="blog-details.html">Ice Cream</a></li>
+                                @foreach($Categories as $Category)
+                                    <li><a href="{{asset('')}}products/{{$Category->permalink}}">{{$Category->name}}</a></li>
+                                @endforeach()
                             </ul>
                         </div>
                     </div>
@@ -85,21 +81,26 @@
                             <h3>Featured Products</h3>
                         </div>
                         <div class="post-inner">
-                            <div class="post">
-                                <figure class="image-box"><a href="shop-details.html"><img src="assets/images/resource/shop/post-1.jpg" alt=""></a></figure>
-                                <h5><a href="shop-details.html">Vanilla Ice Cream</a></h5>
-                                <p>$50.00</p>
-                            </div>
-                            <div class="post">
-                                <figure class="image-box"><a href="shop-details.html"><img src="assets/images/resource/shop/post-2.jpg" alt=""></a></figure>
-                                <h5><a href="shop-details.html">Donuts Cake</a></h5>
-                                <p>$35.00</p>
-                            </div>
-                            <div class="post">
-                                <figure class="image-box"><a href="shop-details.html"><img src="assets/images/resource/shop/post-3.jpg" alt=""></a></figure>
-                                <h5><a href="shop-details.html">Corne Ice Cream</a></h5>
-                                <p>$60.00</p>
-                            </div>
+                            @foreach($FeaturedPoducts as $Product)
+                                <div class="post">
+                                    <figure class="image-box">
+                                        <a href="{{asset('')}}products/{{$Product->permalink }}">
+                                            @if($Product->productImages->count() > 0)
+                                                @foreach($Product->productImages as $Image)
+                                                <td>
+                                                    <img src="{{asset('')}}{{$Image->urlwithoutextension }}{{$ImageSize[150]}}.{{$Image->extension }}" width="50" alt="Image">
+                                                </td>
+                                                @break
+                                                @endforeach
+                                            @else
+                                                <td>{{$Product->price }}</td>
+                                            @endif
+                                        </a>
+                                    </figure>
+                                    <h5><a href="{{asset('')}}{{$Product->permalink }}">{{$Product->name }}</a></h5>
+                                    <p>$50.00</p>
+                                </div>
+                            @endforeach()
                         </div>
                     </div>
                 </div>
@@ -129,15 +130,16 @@
                         </div>
                     </div>
                     <div class="row clearfix">
+                        @foreach($ProductList as $Product)
                         <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
                             <div class="shop-block-one">
                                 <div class="inner-box">
                                     <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-1.jpg" alt="">
+                                        <img src="{{asset('')}}{{$Product->productFirstImageLongHeightSize($Product->id)}}" alt="">
                                     </figure>
                                     <div class="lower-content">
-                                        <span class="price-box">$100</span>
-                                        <h3><a href="shop-details.html">Vanilla Ice Cream</a></h3>
+                                        <span class="price-box">{{$Product->sale_price}}</span>
+                                        <h3><a href="shop-details.html">{{$Product->name}}</a></h3>
                                         <ul class="rating clearfix">
                                             <li><i class="icon-Star"></i></li>
                                             <li><i class="icon-Star"></i></li>
@@ -150,186 +152,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-2.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$70</span>
-                                        <h3><a href="shop-details.html">Slice Super Cake</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-3.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$80</span>
-                                        <h3><a href="shop-details.html">Cone Ice Cream</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-4.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$120</span>
-                                        <h3><a href="shop-details.html">Quality Ice Cream</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-8.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$100</span>
-                                        <h3><a href="shop-details.html">Italian Loaf</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-9.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$70</span>
-                                        <h3><a href="shop-details.html">Pumpkin Pastry</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-10.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$80</span>
-                                        <h3><a href="shop-details.html">Italian Bread</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-11.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$120</span>
-                                        <h3><a href="shop-details.html">Crustry Baguette</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="assets/images/resource/shop/shop-12.jpg" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">$80</span>
-                                        <h3><a href="shop-details.html">Donuts Cake</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach()
                     </div>
-                    <div class="pagination-wrapper centred">
-                        <ul class="pagination">
-                            <li><a href="shop-1.html">Prev</a></li>
-                            <li><a href="shop-1.html">1</a></li>
-                            <li><a href="shop-1.html" class="active">2</a></li>
-                            <li><a href="shop-1.html">3</a></li>
-                            <li><a href="shop-1.html">4</a></li>
-                            <li><a href="shop-1.html">5</a></li>
-                            <li><a href="shop-1.html">Next</a></li>
-                        </ul>
-                    </div>
+                    {{ $ProductList->links('vendor.pagination.custom') }}
                 </div>
             </div>
         </div>

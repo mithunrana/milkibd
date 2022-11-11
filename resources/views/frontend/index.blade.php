@@ -56,10 +56,6 @@
 @endsection()
 
 
-@section('home-news-section')
-    @include('frontend.home.home-news-section')
-@endsection()
-
 
 @section('home-contact-section')
     @include('frontend.home.home-contact-section')
