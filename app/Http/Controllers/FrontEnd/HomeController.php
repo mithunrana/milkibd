@@ -41,9 +41,7 @@ class HomeController extends Controller
         $data['OrderProducts2'] = OrderProduct::orderBy('id','DESC')->skip(3)->take(3)->get()->unique('product_id');
 
         $data['GetServise'] = Service::where('status','Published')->orderBy('order','ASC')->skip(0)->take(4)->get();
-
-        $SlideObj = Slider::where('key','home-slider')->first();
-        $data['SlideItems'] =  SliderItem::where('slider_id',$SlideObj->id)->orderBy('order','DESC')->get();
+        $data['SlideObj'] =  Slider::where('key','home-slider')->first();
 
         return view('frontend.index',$data);
     }

@@ -19,11 +19,11 @@
         <div class="auto-container">
             <div class="content-box">
                 <div class="title">
-                    <h1>Account Login</h1>
+                    <h1>Customer Registraion</h1>
                 </div>
                 <ul class="bread-crumb clearfix">
                     <li><a href="{{asset('')}}">Home</a></li>
-                    <li><a href="{{asset('')}}customer/login">Customer Login</a></li>
+                    <li><a href="{{asset('')}}{{route('customer.register')}}">Customer Registration</a></li>
                 </ul>
             </div>
         </div>
@@ -37,10 +37,17 @@
             <div class="row justify-content-center clearfix">
                 <div class="col-xl-6 col-md-10 form-column">
                     <div style="box-shadow: 0 0 10px rgb(0 0 0 / 20%);padding:40px;" class="form-inner">
-                        <h2 style="padding-bottom:10px;">Login</h2>
+                        <h2 style="padding-bottom:10px;">Registration</h2>
                         <form method="POST" action="{{ route('customer.login.store') }}" id="contact-form" class="default-form">
                             @csrf 
                             <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    @endif
+                                    <input class="{{$errors->has('name') ? ' is-invalid' : ''}}" type="text" name="name" placeholder="Name" required="">
+                                </div>
+
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                     @if ($errors->has('email'))
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -52,11 +59,18 @@
                                     @if ($errors->has('password'))
                                         <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
-                                    <input class="{{$errors->has('name') ? ' is-invalid' : ''}}" type="password" name="password" placeholder="Password" required="">
+                                    <input class="{{$errors->has('password') ? ' is-invalid' : ''}}" type="password" name="password" placeholder="Password" required="">
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                    @if ($errors->has('retype_password'))
+                                        <span class="text-danger">{{ $errors->first('retype_password') }}</span>
+                                    @endif
+                                    <input class="{{$errors->has('retype_password') ? ' is-invalid' : ''}}" type="password" name="retype_password" placeholder="Retype Password" required="">
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
-                                    <button style="width: 100%;" class="theme-btn-one" type="submit" name="submit-form">Login</button>
+                                    <button style="width: 100%;" class="theme-btn-one" type="submit" name="submit-form">Sign Up</button>
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
@@ -77,7 +91,7 @@
                                                 <i style="color:white;background-color:#f16767;padding:12px;" class="icon fab fa-google-plus-g"></i>
                                             </a>
                                         </li>
-                                        <p style="font-size: 18px;text-align: center!important;">Don't Have an Account? <a href="{{asset('')}}customer/register">Sign up now</a></p>
+                                        <p style="font-size: 18px;text-align: center!important;">Already have an account? <a href="{{asset('')}}customer/login">Login</a></p>
                                     </ul>
                                 </div>
                             </div>
@@ -88,6 +102,7 @@
         </div>
     </section>
     <!-- contact-section end -->
+
 
 @endsection()
 

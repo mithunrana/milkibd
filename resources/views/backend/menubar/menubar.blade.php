@@ -51,7 +51,7 @@
                 <th>NAME</th>
                 <th style="">STATUS</th>
                 <th style="">CREATED AT</th>
-                <th style="">OPERATION</th>
+                <th style="">OPERATION </th>
               </tr>
             </thead>
 

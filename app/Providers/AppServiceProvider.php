@@ -16,6 +16,13 @@ use App\Models\ProductAttribute;
 use App\Models\ProductVariation;
 use App\Models\Currency;
 use App\Models\ShippingRule;
+use App\Models\Widget;
+use App\Models\WidgetBar;
+use App\Models\Menu;
+use App\Models\Menu_Node;
+use App\Models\MenuLocation;
+use App\Models\WidgetSetWithWidgetBar;
+use APP\Models\Slider;
 use Session;
 
 class AppServiceProvider extends ServiceProvider
@@ -67,6 +74,14 @@ class AppServiceProvider extends ServiceProvider
             $ProductCollections = ProductCollection::where('status','Published')->get();
             $GetReviews = Reviews::where('status','Published')->orderBy('star', 'ASC')->skip(0)->take(10)->get();
             $FeaturedPoducts = Products::where('status','published')->where('is_featured',1)->orderBy('id', 'DESC')->skip(0)->take(4)->get();
+            $Widgets = Widget::orderBy('id', 'DESC')->get();
+            $WidgetBars = WidgetBar::orderBy('id', 'DESC')->get();
+            $MenuList = Menu::orderBy('id', 'DESC')->get();
+            $FooterBarObj = WidgetBar::where('key', 'footer_bar')->first();
+            $PrimarySideBarObj = WidgetBar::where('key', 'primary_side_bar')->first();
+            $MainMenuLocationObj = MenuLocation::where('location','main-menu')->first();
+
+
 
 
             $ImageSize = array("150"=>"-150x150", "500"=>"-500x500", "540" => "-540x600");
@@ -88,6 +103,12 @@ class AppServiceProvider extends ServiceProvider
             $view->with('TopTenReview',$GetReviews);
             $view->with('FeaturedPoducts',$FeaturedPoducts);
             $view->with('CurrencyObj',$CurrencyObj);
+            $view->with('Widgets',$Widgets);
+            $view->with('WidgetBars',$WidgetBars);
+            $view->with('MenuList',$MenuList);
+            $view->with('FooterBarObj',$FooterBarObj);
+            $view->with('PrimarySideBarObj',$PrimarySideBarObj);
+            $view->with('MainMenuLocationObj',$MainMenuLocationObj);
         });
     }
 }

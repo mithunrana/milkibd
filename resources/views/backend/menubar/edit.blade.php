@@ -25,7 +25,7 @@
   
     <section id="vueapp" class="content">
 
-        <!-- slider item EDIT modal -->
+        <!-- menu item EDIT modal -->
         @foreach($MenuItemsAll as $Item)
             <div class="modal fade" id="updatemenu{{$Item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
@@ -77,7 +77,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="button_text">Target</label>
                                             @if ($errors->has('target'))
@@ -89,7 +89,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="parent_id">Parent Menu</label>
                                             @if ($errors->has('parent_id'))
@@ -103,6 +103,17 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="order">Order</label>
+                                            <input class="form-control {{$errors->has('order') ? ' is-invalid' : ''}}" type="text" name="order" value="{{$Item->order}}" id="order" placeholder="Order No">
+                                            @if ($errors->has('order'))
+                                                <span class="text-danger">{{ $errors->first('order') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -114,10 +125,10 @@
                 </div>
             </div>
         @endforeach
-        <!-- Slider Item EDIT modal End -->
+        <!-- menu Item EDIT modal End -->
 
 
-        <!-- slider item add modal -->
+        <!-- menu item add modal -->
         <div class="modal fade" id="newmenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content border-0">
@@ -168,7 +179,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="button_text">Target</label>
                                         @if ($errors->has('target'))
@@ -180,7 +192,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="parent_id">Parent Menu</label>
                                         @if ($errors->has('parent_id'))
@@ -194,6 +206,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="order">Order</label>
+                                        <input class="form-control {{$errors->has('order') ? ' is-invalid' : ''}}" type="text" name="order" value="{{old('order')}}" id="order" placeholder="Order No">
+                                        @if ($errors->has('order'))
+                                            <span class="text-danger">{{ $errors->first('order') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -204,7 +225,7 @@
                 </div>
             </div>
         </div>
-        <!-- Slider Item Add modal End -->
+        <!-- menu Item Add modal End -->
 
 
         <div class="container-fluid">
@@ -229,7 +250,7 @@
                                 <div class="card card-default">
                                     <div class="card-header">
                                         <h3 class="card-title" style="color:#1f64a0!important;font-weight:bold">Menu Structure</h3>
-                                        <button style="margin-top:0px;" class="btn btn-info float-sm-right" type="button" data-toggle="modal" data-target="#newmenu">ADD NEW SLIDE <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <button style="margin-top:0px;" class="btn btn-info float-sm-right" type="button" data-toggle="modal" data-target="#newmenu">ADD NEW MENU <i class="fa fa-plus" aria-hidden="true"></i></button>
                                     </div>
                                     <div class="card-body">
                                         <table class="table table-border">
@@ -273,6 +294,28 @@
                             <div class="card-body">
                                 <button type="submit" value="save" class="btn btn-info"><i class="fa fa-save"></i> Save</button>
                                 <button type="submit" value="apply" class="btn btn-success"><i class="fa fa-check-circle"></i> Save & Edit</button>
+                            </div>
+                        </div>
+
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title" style="color:#1f64a0!important;font-weight:bold">Menu Setting</h3>
+                            </div>
+                            <div style="padding: 10px;" class="card-body">
+                                <span style="color:#007bff;font-weight:bold">Display Location</span> 
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="locations[]" value="header-menu" {{ in_array('header-menu', $Locations) ? 'checked' : '' }}>Header Navigation
+                                    </label>
+                                    <br/>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="locations[]" value="main-menu" {{ in_array('main-menu', $Locations) ? 'checked' : '' }}>Main Navigation
+                                    </label>
+                                    <br/>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="locations[]" value="footer-menu" {{ in_array('footer-menu', $Locations) ? 'checked' : '' }}>Footer Navigation
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -327,27 +370,6 @@
                 Swal.fire("Deleted!", "Data has been deleted.", "success");
             }
         });
-    });
-
-    $(document).on("click", "#imagepush", function (e) {
-        var imageurl = $('#mediaurl').val();
-        if(action=='EDIT'){
-            $('#'+SlideNo+'slideimagepreview').attr('src',baseurl+imageurl);
-            $('#'+SlideNo+'slideimageurl').val(imageurl);
-        }else{
-            $('#slideimagepreview').attr('src',baseurl+imageurl);
-            $('#slideimageurl').val(imageurl);
-        }
-    });
-
-    $(document).on("click", ".addslide", function (e) {
-        action = 'ADD';
-    });
-
-    $(document).on("click", ".editslide", function (e) {
-        var SlideID = $(this).attr('data-value');
-        action = 'EDIT';
-        SlideNo = SlideID;
     });
 </script>
 @endsection()

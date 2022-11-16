@@ -27,6 +27,7 @@ class CreateMenuNodesTable extends Migration
             $table->string('css_class', 120)->nullable();
             $table->string('target', 20)->default('_self');
             $table->tinyInteger('has_child')->unsigned()->default(0);
+            $table->bigInteger('order')->unsigned()->default(0);
             $table->timestamps();
         });
     }
@@ -38,6 +39,8 @@ class CreateMenuNodesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('menu__nodes');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

@@ -16,20 +16,19 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li><a href="{{asset('')}}">Home</a></li>
-                                <li class="dropdown"><a href="{{route('products')}}">Products</a>
-                                    <ul>
-                                        <li><a href="shop-1.html">Shop Page 01</a></li>
-                                        <li><a href="shop-2.html">Shop Page 02</a></li>
-                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                        <li><a href="cart.html">Cart Page</a></li>
-                                        <li><a href="checkout.html">Checkout Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('service')}}">Service</a></li>
-                                <li><a href="{{route('about.us')}}">About Us</a></li>
-                                <li><a href="{{route('contact.us')}}">Contact Us</a></li>
-                                <li><a href="contact.html">Job Circular</a></li>   
+                                @foreach($MainMenuLocationObj->menu->menuitems->where('parent_id',0) as $Item)
+                                    @if(count($Item->childItems))
+                                        <li class="dropdown {{$Item->css_class}}"><a href="{{$Item->url}}">{{$Item->title}}</a>
+                                            <ul>
+                                                @foreach ($Item->childItems as $childItems)
+                                                    @include('frontend.common.submenu', ['sub_items' => $childItems])
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @else
+                                        <li class="{{$Item->css_class}}"><a href="{{$Item->url}}">{{$Item->title}}</a></li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </nav>
@@ -53,12 +52,6 @@
                     <li class="user-btn">
                         <a href="index.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Profile"></i>
-                        </a>
-                    </li>
-                    <li class="cart-btn">
-                        <a href="shop-1.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
-                            <i class="icon-Bag"></i>
-                            <span>3</span>
                         </a>
                     </li>
                 </ul>
@@ -95,12 +88,6 @@
                     <li class="user-btn">
                         <a href="index.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Profile"></i>
-                        </a>
-                    </li>
-                    <li class="cart-btn">
-                        <a href="shop-1.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
-                            <i class="icon-Bag"></i>
-                            <span>3</span>
                         </a>
                     </li>
                 </ul>

@@ -638,7 +638,7 @@
   display:none;
   opacity: 0;
   visibility: hidden;
-  background: #121212;
+  background: #e3a087;
   padding: 10px 0px;
   filter: alpha(opacity=0);
   -webkit-transition: all 0.2s ease-out;
@@ -5157,11 +5157,11 @@ div#mCSB_1_container{
 }
 
 .main-header.style-five .main-menu .navigation > li > a{
-  color: #222;
+  color: #fff;
 }
 
 .main-header.style-five .main-menu .navigation > li.dropdown > a:before{
-  color: #222;
+  color: #fff;
 }
 
 .main-header.style-five .menu-right-content .user-btn a, 

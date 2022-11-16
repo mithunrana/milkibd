@@ -117,6 +117,12 @@ Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
     Route::post('/admin/shipping-method-update/{id}','SetupMasterController@shippingMethodUpdate')->name('dashboard.shipping.method.update');
 
 
+    Route::get('/admin/reviews','ReviewController@index')->name('dashboard.review');
+    Route::get('/admin/review/edit/{id}','ReviewController@edit')->name('dashboard.review.edit');
+    Route::post('/admin/review/update/{id}','ReviewController@update')->name('dashboard.review.update');
+    Route::get('/admin/review/delete/{id}','ReviewController@delete')->name('dashboard.slider.item.delete');
+
+
     Route::get('/admin/slider','SetupMasterController@slider')->name('dashboard.slider');
     Route::get('/admin/slider-add','SetupMasterController@sliderAdd')->name('dashboard.slider.add');
     Route::post('/admin/slider-store','SetupMasterController@sliderStore')->name('dashboard.slider.store');
@@ -128,7 +134,6 @@ Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
     Route::post('/admin/slider-item-store','SetupMasterController@sliderItemStore')->name('dashboard.slider.item.store');
     Route::post('/admin/slider-item-update/{id}','SetupMasterController@sliderItemUpdate')->name('dashboard.slider.item.update');
     Route::get('/admin/slider-item-delete/{id}','SetupMasterController@sliderItemDelete')->name('dashboard.slider.item.delete');
-
 
     
     Route::get('/admin/menubar','MenubarController@index')->name('dashboard.menubar');
@@ -144,13 +149,15 @@ Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
     Route::get('/admin/menubar-item-delete/{id}','MenubarController@menuItemDelete')->name('dashboard.menubar.item.delete');
 
 
-    Route::get('/admin/reviews','ReviewController@index')->name('dashboard.review');
-    Route::get('/admin/review/edit/{id}','ReviewController@edit')->name('dashboard.review.edit');
-    Route::post('/admin/review/update/{id}','ReviewController@update')->name('dashboard.review.update');
-    Route::get('/admin/review/delete/{id}','ReviewController@delete')->name('dashboard.slider.item.delete');
+    Route::get('/admin/widget','WidgetCotroller@index')->name('dashboard.widget');
+    Route::post('/admin/widget','WidgetCotroller@widgetStore')->name('dashboard.widget.store');
+    Route::post('/admin/widgetbar','WidgetCotroller@widgetBarStore')->name('dashboard.widget.bar.store');
+    Route::post('/admin/widgetset','WidgetCotroller@widgetSetStore')->name('dashboard.widget.set.store');
+    Route::post('/admin/widgetset-update/{id}','WidgetCotroller@widgetSetUpdate')->name('dashboard.widget.set.update');
+    Route::get('/admin/widgetset-delete/{id}','WidgetCotroller@widgetSetDelete')->name('dashboard.widget.set.delete');
 
 
-
+    
     //Route::get('/admin/media','MediaController@getMedia')->name('get.media');
     Route::get('/admin/media/{folderid}','MediaController@fetchMedia')->name('media.fetch');
     Route::post('/admin/media-upload','MediaController@mediaStore')->name('media.upload');
@@ -196,7 +203,8 @@ Route::group(['namespace'=>'App\Http\Controllers\FrontEnd'], function(){
 });
 
 
-Route::get('/customer/login', [AuthenticatedSessionController::class, 'create'])->name('customer.login')->middleware('guest:customer');
+Route::get('/customer/login', [AuthenticatedSessionController::class, 'login'])->name('customer.login')->middleware('guest:customer');
+Route::get('/customer/register', [AuthenticatedSessionController::class, 'create'])->name('customer.register')->middleware('guest:customer');
 Route::post('/customer/login/store', [AuthenticatedSessionController::class, 'store'])->name('customer.login.store');
 Route::group(['middleware' => 'customer'], function() {
     Route::get('/customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard');
@@ -204,11 +212,7 @@ Route::group(['middleware' => 'customer'], function() {
 });
 
 
-
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
+Auth::routes(['verify' => true]);
 
 
 Route::get('/dashboard', function () {
@@ -218,12 +222,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Admin Routes
-|--------------------------------------------------------------------------
-*/
 

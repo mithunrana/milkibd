@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Menu_Node;
+use App\Models\MenuLocation;
 class MenubarController extends Controller
 {
     public function index(){
         $Menus = Menu::orderBy('id','DESC')->get();
-        return view('backend.menubar.menubar',compact('Menus'));
+        $HomeMenu = MenuLocation::where('location','main-menu')->first();
+        return view('backend.menubar.menubar',compact('Menus','HomeMenu'));
     }
 
 
@@ -36,8 +38,11 @@ class MenubarController extends Controller
         $MenuObj  = Menu::where('id',$id)->first();
         $MenuItemsAll = Menu_Node::where('menu_id',$id)->get();
         $MenuItems = Menu_Node::where('menu_id',$id)->where('parent_id',0)->with('childItems')->get();
-        return view('backend.menubar.edit',compact('MenuObj','MenuItems','MenuItemsAll'));
+        $Locations = MenuLocation::where('menu_id',$id)->pluck('location')->toArray();
+        return view('backend.menubar.edit',compact('MenuObj','MenuItems','MenuItemsAll','Locations'));
     }
+
+
 
     public function update(Request $request,$id){
         $this->validate($request, [
@@ -49,6 +54,10 @@ class MenubarController extends Controller
         $MenuObj->name = $request->name;
         $MenuObj->status = $request->status;
         $MenuObj->save();
+
+        $MenuObj->menuLocation()->detach();
+        $MenuObj->menuLocation()->attach($request->locations);
+
         return redirect('admin/menubar')->with('message','Menubar Successfully Updated');
     }
 
@@ -66,6 +75,7 @@ class MenubarController extends Controller
             'menu_id' => "required",
             'title' => "required",
             'url' => 'required',
+            'order' => 'required|numeric',
         ]);
 
         $Menu_NodeObj = new Menu_Node();
@@ -76,6 +86,7 @@ class MenubarController extends Controller
         $Menu_NodeObj->css_class  = $request->css_class;
         $Menu_NodeObj->target  = $request->target;
         $Menu_NodeObj->parent_id  = $request->parent_id;
+        $Menu_NodeObj->order  = $request->order;
         $Menu_NodeObj->save();
         return redirect()->back()->with('message','Custom Menu Successfully Added');
     }
@@ -86,6 +97,7 @@ class MenubarController extends Controller
             'menu_id' => "required",
             'title' => "required",
             'url' => 'required',
+            'order' => 'required|numeric',
         ]);
 
         $Menu_NodeObj  = Menu_Node::where('id',$id)->first();
@@ -96,6 +108,7 @@ class MenubarController extends Controller
         $Menu_NodeObj->css_class  = $request->css_class;
         $Menu_NodeObj->target  = $request->target;
         $Menu_NodeObj->parent_id  = $request->parent_id;
+        $Menu_NodeObj->order  = $request->order;
         $Menu_NodeObj->save();
         return redirect()->back()->with('message','Menu Node Successfully Updated');
     }
