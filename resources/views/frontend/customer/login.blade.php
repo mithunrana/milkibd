@@ -1,3 +1,9 @@
+@php
+    $title = "Login | Milki Icecream Industry";
+    $keywords =  "Milki Icecream Industry, login, registration";
+    $description =  "Milki Icecream Industry, login here milki icecream industry customer";
+@endphp
+
 @extends('frontend.master')
 
 

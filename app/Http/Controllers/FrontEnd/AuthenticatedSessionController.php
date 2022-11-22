@@ -16,14 +16,6 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
-    {
-        return view('frontend.customer.registration');
-    }
-
-    public function login(){
-        return view('frontend.customer.login');
-    }
 
     /**
      * Handle an incoming authentication request.

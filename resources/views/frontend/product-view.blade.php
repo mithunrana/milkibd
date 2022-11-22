@@ -1,5 +1,10 @@
-@extends('frontend.master')
+@php
+    $title = $Product->title;
+    $keywords = $Product->metakeyword;
+    $description =  $Product->metadescription;
+@endphp
 
+@extends('frontend.master')
 
 @section('product-sidebar')
     @include('frontend.common.product-sidebar')
@@ -11,7 +16,6 @@
 @endsection()
 
 
-
 @section('main-content-section')
 
 
@@ -20,11 +24,11 @@
     <div class="auto-container">
         <div class="content-box">
             <div class="title">
-                <h1>Shop Details</h1>
+                <h1>{{$Product->name}}</h1>
             </div>
             <ul class="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
-                <li>Details</li>
+                <li><a href="{{route('products')}}">Products</a></li>
+                <li>{{$Product->name}}</li>
             </ul>
         </div>
     </div>
@@ -34,7 +38,7 @@
 
 <!-- single-product -->
 <section class="single-product">
-    <div class="product-details-content" style="background-image: url({{asset('')}}frontend/assets/images/background/single-shop-1.jpg);">
+    <div style="padding-bottom: 40px;" class="product-details-content" style="background-image: url({{asset('')}}frontend/assets/images/background/single-shop-1.jpg);">
         <div class="auto-container">
             <div class="row clearfix">
                 <div class="col-lg-6 col-md-12 col-sm-12 image-column">
@@ -72,8 +76,8 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                     <div class="product-details">
-                        <h2>Cone Ice Cream</h2>
-                        <h3>$50.00</h3>
+                        <h2>{{$Product->name}}</h2>
+                        <h3>@if(Session::has('Currency')) <b>{{ Session::get('Currency')['symbol']}}</b> @endif 50.00</h3>
                         <div class="customer-rating clearfix">
                             <ul class="rating pull-left">
                                 <li><i class="icon-Star"></i></li>
@@ -83,11 +87,11 @@
                                 <li><i class="icon-Star"></i></li>
                             </ul>
                             <div class="review pull-left">
-                                <a href="shop-details.html">( {{$TotalReview}} Customer Review )</a>
+                                <a href="#">( {{$TotalReview}} Customer Review )</a>
                             </div>
                         </div>
                         <div class="text">
-                            {{$Product->description}}
+                            {!! $Product->description !!}
                         </div>
                         <div class="addto-cart-box"> 
                             <ul class="clearfix">
@@ -115,13 +119,13 @@
             </div>
         </div>
     </div>
-    <div class="product-discription">
+    <div style="padding:40px 0px 40px 0px" class="product-discription">
         <div class="auto-container">
             <div class="tabs-box">
                 <div class="tab-btn-box">
                     <ul class="tab-btns tab-buttons clearfix">
                         <li class="tab-btn active-btn" data-tab="#tab-1">Description</li>
-                        <li class="tab-btn" data-tab="#tab-2">Reviews (2)</li>
+                        <li class="tab-btn" data-tab="#tab-2">Reviews ({{$TotalReview}})</li>
                     </ul>
                 </div>
                 <div class="tabs-content">
@@ -197,99 +201,48 @@
             </div>
         </div>
     </div>
-    <div class="related-product" style="background-image: url({{asset('')}}frontend/assets/images/background/shop-2.jpg);">
-        <div class="auto-container">
-            <div class="top-title centred">
-                <h2>Related Products</h2>
-            </div>
-            <div class="row clearfix">
-                <div class="col-lg-3 col-md-6 col-sm-12 shop-block">
-                    <div class="shop-block-one">
-                        <div class="inner-box">
-                            <figure class="image-box">
-                                <img src="{{asset('')}}frontend/assets/images/resource/shop/shop-1.jpg" alt="">
-                            </figure>
-                            <div class="lower-content">
-                                <span class="price-box">$100</span>
-                                <h3><a href="shop-details.html">Vanilla Ice Cream</a></h3>
-                                <ul class="rating clearfix">
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                </ul>
-                                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
+
+
+
+    @if($Product->relatedProduct()->count() > 0)
+        <div class="related-product" style="background-image: url({{asset('')}}frontend/assets/images/background/shop-2.jpg);">
+            <div class="auto-container">
+                <div class="top-title centred">
+                    <h2>Related Products</h2>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 shop-block">
-                    <div class="shop-block-one">
-                        <div class="inner-box">
-                            <figure class="image-box">
-                                <img src="{{asset('')}}frontend/assets/images/resource/shop/shop-2.jpg" alt="">
-                            </figure>
-                            <div class="lower-content">
-                                <span class="price-box">$70</span>
-                                <h3><a href="shop-details.html">Slice Super Cake</a></h3>
-                                <ul class="rating clearfix">
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                </ul>
-                                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                <div class="row clearfix">
+                    @foreach($Product->relatedProduct as $RelatedProduct)
+                        <div class="col-lg-3 col-md-6 col-sm-12 shop-block">
+                            <div class="shop-block-one">
+                                <div class="inner-box">
+                                    <figure class="image-box">
+                                        @if($Product->productImages->count() > 0)
+                                            @foreach($Product->productImages as $Image)
+                                                <img src="{{asset('')}}{{$Image->urlwithoutextension }}{{$ImageSize[500]}}.{{$Image->extension }}" alt="{{$RelatedProduct->name}}">
+                                                @break
+                                            @endforeach
+                                        @endif
+                                    </figure>
+                                    <div class="lower-content">
+                                        <span class="price-box">$100</span>
+                                        <h3><a href="shop-details.html">{{$RelatedProduct->name}}</a></h3>
+                                        <ul class="rating clearfix">
+                                            <li><i class="icon-Star"></i></li>
+                                            <li><i class="icon-Star"></i></li>
+                                            <li><i class="icon-Star"></i></li>
+                                            <li><i class="icon-Star"></i></li>
+                                            <li><i class="icon-Star"></i></li>
+                                        </ul>
+                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 shop-block">
-                    <div class="shop-block-one">
-                        <div class="inner-box">
-                            <figure class="image-box">
-                                <img src="{{asset('')}}frontend/assets/images/resource/shop/shop-3.jpg" alt="">
-                            </figure>
-                            <div class="lower-content">
-                                <span class="price-box">$80</span>
-                                <h3><a href="shop-details.html">Cone Ice Cream</a></h3>
-                                <ul class="rating clearfix">
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                </ul>
-                                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 shop-block">
-                    <div class="shop-block-one">
-                        <div class="inner-box">
-                            <figure class="image-box">
-                                <img src="{{asset('')}}frontend/assets/images/resource/shop/shop-4.jpg" alt="">
-                            </figure>
-                            <div class="lower-content">
-                                <span class="price-box">$120</span>
-                                <h3><a href="shop-details.html">Quality Ice Cream</a></h3>
-                                <ul class="rating clearfix">
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                    <li><i class="icon-Star"></i></li>
-                                </ul>
-                                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 </section>
 <!-- single-product end -->
 

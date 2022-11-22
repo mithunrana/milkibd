@@ -1,7 +1,7 @@
     <!-- main header -->
-    <header class="main-header style-one style-five">
+    <header class="main-header @if(Route::currentRouteName() == 'home') style-one @else style-one style-five @endif">
         <!-- header-lower -->
-        <div style="background: #e3a087;" class="header-lower">
+        <div @if(Route::currentRouteName() != 'home') style="background:#e3a087"  @endif class="header-lower">
             <div class="outer-box">
                 <div class="logo-box">
                     <figure class="logo"><a href="index.html"><img src="{{asset('')}}frontend/assets/images/test2.png" alt=""></a></figure>
@@ -18,7 +18,7 @@
                             <ul class="navigation clearfix">
                                 @foreach($MainMenuLocationObj->menu->menuitems->where('parent_id',0) as $Item)
                                     @if(count($Item->childItems))
-                                        <li class="dropdown {{$Item->css_class}}"><a href="{{$Item->url}}">{{$Item->title}}</a>
+                                        <li class="dropdown {{$Item->css_class}}"><a href="{{$Item->url}}">{{$Item->title}} </a>
                                             <ul>
                                                 @foreach ($Item->childItems as $childItems)
                                                     @include('frontend.common.submenu', ['sub_items' => $childItems])
@@ -50,7 +50,7 @@
                         </div>
                     </li>
                     <li class="user-btn">
-                        <a href="index.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
+                        <a href="@if(Auth::guard('customer')->check()) {{route('customer.dashboard')}} @else {{route('customer.login')}} @endif" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Profile"></i>
                         </a>
                     </li>
@@ -86,7 +86,7 @@
                         </div>
                     </li>
                     <li class="user-btn">
-                        <a href="index.html" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
+                        <a href="@if(Auth::guard('customer')->check()) {{route('customer.dashboard')}} @else {{route('customer.login')}} @endif" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);">
                             <i class="icon-Profile"></i>
                         </a>
                     </li>

@@ -1,5 +1,5 @@
     <!-- main-footer -->
-    <footer class="main-footer" style="background-image: url(assets/images/background/footer-1.jpg);">
+    <footer class="main-footer" style="background-image: url({{asset('')}}assets/images/background/footer-1.jpg);">
         <div class="auto-container">
             <div class="subscribe-inner clearfix">
                 <div class="text pull-left">
@@ -49,7 +49,7 @@
         <div class="footer-bottom">
             <div class="auto-container clearfix">
                 <div class="copyright pull-left">
-                    <p><a href="index.html">Bagery</a> &copy; 2020 All Right Reserved</p>
+                    <p>{{ $SettingKey['theme_thigo_copyright'] }}</p>
                 </div>
                 <ul class="footer-nav pull-right">
                     <li><a href="index.html">Terms of Service</a></li>

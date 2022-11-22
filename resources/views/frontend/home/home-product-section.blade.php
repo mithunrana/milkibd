@@ -10,11 +10,13 @@
                     <div class="shop-block-one">
                         <div class="inner-box">
                             <figure class="image-box">
-                                <img src="{{asset('')}}{{$Product->productFirstImageLongHeightSize($Product->id)}}" alt="">
+                                <a href="{{$Product->permalink}}">
+                                    <img src="{{asset('')}}{{$Product->productFirstImageLongHeightSize($Product->id)}}" alt="">
+                                </a>
                             </figure>
                             <div class="lower-content">
                                 <span class="price-box">{{$Product->sale_price}}</span>
-                                <h3><a href="shop-details.html">{{$Product->name}}</a></h3>
+                                <h3><a href="{{$Product->permalink}}">{{$Product->name}}</a></h3>
                                 <ul class="rating clearfix">
                                     <li><i class="icon-Star"></i></li>
                                     <li><i class="icon-Star"></i></li>

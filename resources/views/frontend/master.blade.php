@@ -5,10 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-<title>Bagery - HTML 5 Template Preview</title>
+<title> @isset($title) {{$title}} @endisset</title>
+<meta name="description" content="@isset($description){{$description}}@endisset">
+<meta name="keywords" content="@isset($keywords){{$keywords}}@endisset">
+
+<meta property="og:image:width"   content="600" />
+<meta property="og:image:height"  content="315" />
+
+<meta property="og:url"           content="@php echo url()->current(); @endphp"/>
+<meta property="og:title"         content="@isset($title){{$title}}@endisset"/>
+<meta property="og:description"   content="@isset($description){{$description}}@endisset" />
+<meta property="og:image"         content="@isset($image){{asset('')}}{{$image}}@endisset" />
 
 <!-- Fav Icon -->
-<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="{{asset('')}}frontend/assets/images/favicon.ico" type="image/x-icon">
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">

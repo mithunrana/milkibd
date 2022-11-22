@@ -20,7 +20,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li style="border-bottom:1px solid white;" class="nav-item">
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -28,8 +28,32 @@
               </p>
             </a>
           </li>
+
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
+            <a href="#" class="nav-link">
+              &nbsp <i class="fa fa-edit"></i>
+              <p>&nbsp Blog <i class="fas fa-angle-left right"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('dashboard.blog')}}" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Post</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('dashboard.blog.category')}}" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('dashboard.blog.tag')}}" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Tags</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           
-          <li style="border-bottom:1px solid white;" class="nav-item">
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="{{route('dashboard.review')}}" class="nav-link">
             &nbsp <i class="far fa-comment-dots"></i> &nbsp
               <p>
@@ -38,7 +62,7 @@
             </a>
           </li>
 
-          <li style="border-bottom:1px solid white;" class="nav-item">
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="{{route('dashboard.slider')}}" class="nav-link">
             &nbsp <i class="far fa-image"></i> &nbsp
               <p>
@@ -47,7 +71,7 @@
             </a>
           </li>
 
-          <li style="border-bottom:1px solid white;" class="nav-item">
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="#" class="nav-link nav-link">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               <p>
@@ -149,39 +173,39 @@
               </li>
               <li class="nav-item">
                 <a href="{{route('dashboard.product.taxes')}}" class="nav-link">
-                  <i class='fas fa-money-check-alt'></i>
+                  &nbsp<i class='fas fa-money-check-alt'></i>
                   <p>Taxes</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('dashboard.currency')}}" class="nav-link">
-                  <i class='fas fa-money-bill'></i>
+                  &nbsp <i class='fas fa-money-bill'></i>
                   <p>Currency</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('dashboard.country')}}" class="nav-link">
-                  <i class='fas fa-city'></i>
+                 &nbsp <i class='fas fa-city'></i>
                   <p>Country</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link">
-                  <i class="fas fa-cogs nav-icon"></i>
+                &nbsp <i class="fas fa-cogs nav-icon"></i>
                   <p>Settings</p>
                 </a>
               </li>
             </ul>
           </li>
 
-          <li style="border-bottom:1px solid white;" class="nav-item">
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="{{route('dashboard.slider')}}" class="nav-link">
             &nbsp <i class="far fa-envelope"></i> &nbsp
               <p>Contact</p>
             </a>
           </li>
 
-          <li style="border-bottom:1px solid white;" class="nav-item">
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-paint-brush"></i>
               <p>
@@ -200,24 +224,31 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('dashboard.widget')}}" style="font-weight:100" class="nav-link">
+                <a href="{{route('dashboard.setting.option')}}" style="font-weight:100" class="nav-link">
                   <p>&nbsp Theme Options</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('dashboard.widget')}}" style="font-weight:100" class="nav-link">
+                <a href="{{route('dashboard.setting.customcss')}}" style="font-weight:100" class="nav-link">
                   <p>&nbsp Custom CSS</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('dashboard.widget')}}" style="font-weight:100" class="nav-link">
+                <a href="{{route('dashboard.setting.customjs')}}" style="font-weight:100" class="nav-link">
                   <p>&nbsp Custom JS</p>
                 </a>
               </li>
             </ul>
           </li>
 
-          <li style="border-bottom:1px solid white;" class="nav-item">
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
+            <a href="" class="nav-link">
+            &nbsp <i class="fa fa-plug"></i> &nbsp
+              <p>Plugins</p>
+            </a>
+          </li>
+
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-cogs"></i>
               <p>Settings <i class="fas fa-angle-left right"></i></p>
@@ -246,6 +277,45 @@
               <li class="nav-item">
                 <a href="{{route('dashboard.widget')}}" style="font-weight:100" class="nav-link">
                   <p>&nbsp Social Login</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-user-shield"></i>
+              <p>Platform Administration <i class="fas fa-angle-left right"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Roles and Permissions</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" style="font-weight:100" class="nav-link">
+                  <p>&nbsp System information</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Cache management</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Activities Logs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" style="font-weight:100" class="nav-link">
+                  <p>&nbsp Backups</p>
                 </a>
               </li>
             </ul>

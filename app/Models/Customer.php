@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Customer extends Authenticatable implements MustVerifyEmail
+class Customer extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $guard = 'customer';

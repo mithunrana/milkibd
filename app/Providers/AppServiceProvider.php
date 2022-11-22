@@ -23,6 +23,10 @@ use App\Models\Menu_Node;
 use App\Models\MenuLocation;
 use App\Models\WidgetSetWithWidgetBar;
 use APP\Models\Slider;
+use App\Models\Setting;
+use App\Models\BlogCategory;
+use App\Models\BlogPost;
+use App\Models\BlogTag;
 use Session;
 
 class AppServiceProvider extends ServiceProvider
@@ -44,21 +48,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!Session::has('Currency')){
-            $CurrencyObj = Currency::where('is_default',1)->first();
-            Session::put('Currency', $CurrencyObj);
-        }
-
-        if(!Session::has('shippingcharge')){
-            $ShippingObj = ShippingRule::where('isdefault',1)->first();
-            Session::put('shippingcharge', $ShippingObj->price);
-        }
-
-
+        
         $ImageSize = array("150"=>"-150x150", "500"=>"-500x500", "540" => "-540x600");
 
         config()->set('ImageSize',$ImageSize);
-
         view()->composer('*', function ($view){
             $GetAllProductBrand = ProductBrand::orderBy('id', 'DESC')->get();
             $GetAllProductCategory = ProductCategory::orderBy('id', 'DESC')->get();
@@ -80,9 +73,20 @@ class AppServiceProvider extends ServiceProvider
             $FooterBarObj = WidgetBar::where('key', 'footer_bar')->first();
             $PrimarySideBarObj = WidgetBar::where('key', 'primary_side_bar')->first();
             $MainMenuLocationObj = MenuLocation::where('location','main-menu')->first();
+            $BlogAllCategory = BlogCategory::all();
+            $BlogAllTag = BlogTag::all();
 
+            $SettingKey = Setting::get()->pluck('value','key')->toArray();
 
+            if(!Session::has('Currency')){
+                $CurrencyObj = Currency::where('is_default',1)->first();
+                Session::put('Currency', $CurrencyObj);
+            }
 
+            if(!Session::has('shippingcharge')){
+                $ShippingObj = ShippingRule::where('isdefault',1)->first();
+                Session::put('shippingcharge', $ShippingObj->price);
+            }
 
             $ImageSize = array("150"=>"-150x150", "500"=>"-500x500", "540" => "-540x600");
             
@@ -109,6 +113,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('FooterBarObj',$FooterBarObj);
             $view->with('PrimarySideBarObj',$PrimarySideBarObj);
             $view->with('MainMenuLocationObj',$MainMenuLocationObj);
+            $view->with('BlogAllCategory',$BlogAllCategory);
+            $view->with('BlogAllTag',$BlogAllTag);
+            $view->with('SettingKey',$SettingKey);
         });
     }
 }

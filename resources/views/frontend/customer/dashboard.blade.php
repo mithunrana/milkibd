@@ -23,7 +23,7 @@
                 </div>
                 <ul class="bread-crumb clearfix">
                     <li><a href="{{asset('')}}">Home</a></li>
-                    <li><a href="{{asset('')}}">Customer Login</a></li>
+                    <li><a href="#">Dashboard</a></li>
                 </ul>
             </div>
         </div>
@@ -32,11 +32,12 @@
 
 
     <!-- contact-section -->
-    <section class="contact-section alternet-2 sec-pad" style="background-image: url(assets/images/background/contact-3.jpg);">
+    <section class="contact-section alternet-2 sec-pad" style="padding: 30px 0px 120px 0px !important;background-image: url(assets/images/background/contact-3.jpg);">
         <div style="max-width: 800px;" class="auto-container">
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-6 col-sm-12 info-column">
-                    <div class="contact-info-inner">
+                    <button class="theme-btn-one" style="width:100%;text-align:left;padding: 17px 20px;" type="submit" >Dashboard</button>
+                    <div style="margin-top:20px;" class="contact-info-inner">
                         <div class="single-box">
                             <h3>Opening hours</h3>
                             <ul class="list clearfix"> 
@@ -65,8 +66,12 @@
                 </div>
                 <div class="col-lg-8 col-md-6 col-sm-12 form-column">
                     <div class="form-inner">
-                        <h3>Drop us a line</h3>
-                        <form method="post" action="sendemail.php" id="contact-form" class="default-form"> 
+                        <h2 style="margin-top:10px;">Dashboard</h2>
+                        <p>
+                            From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing 
+                            addresses and edit your password and account details.
+                        </p>
+                        <form style="margin-top:20px;" method="post" action="sendemail.php" id="contact-form" class="default-form"> 
                             <div class="row clearfix">
                                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                     <input type="text" name="username" placeholder="Your Name *" required="">

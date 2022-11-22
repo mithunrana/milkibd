@@ -111,7 +111,6 @@
 
 
 
-
         <!-- slider item add modal -->
         <div class="modal fade" id="newslide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -361,8 +360,5 @@
         action = 'EDIT';
         SlideNo = SlideID;
     });
-
-  
-
 </script>
 @endsection()

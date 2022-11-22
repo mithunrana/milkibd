@@ -1,3 +1,9 @@
+@php
+    $title = "Customer Registration | Milki Icecream Industry";
+    $keywords =  "Milki Icecream Industry, login, registration";
+    $description =  "Milki Icecream Industry, Registration here milki icecream industry customer";
+@endphp
+
 @extends('frontend.master')
 
 
@@ -38,35 +44,35 @@
                 <div class="col-xl-6 col-md-10 form-column">
                     <div style="box-shadow: 0 0 10px rgb(0 0 0 / 20%);padding:40px;" class="form-inner">
                         <h2 style="padding-bottom:10px;">Registration</h2>
-                        <form method="POST" action="{{ route('customer.login.store') }}" id="contact-form" class="default-form">
+                        <form method="POST" action="{{ route('customer.register') }}" id="contact-form" class="default-form">
                             @csrf 
                             <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
-                                    <input class="{{$errors->has('name') ? ' is-invalid' : ''}}" type="text" name="name" placeholder="Name" required="">
+                                    <input class="{{$errors->has('name') ? ' is-invalid' : ''}}" type="text" name="name" value="{{old('name')}}" placeholder="Name" required="">
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                     @if ($errors->has('email'))
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
-                                    <input class="{{$errors->has('email') ? ' is-invalid' : ''}}" type="email" name="email" placeholder="Your Email *" required="">
+                                    <input class="{{$errors->has('email') ? ' is-invalid' : ''}}" type="email" name="email" value="{{old('email')}}" placeholder="Your Email *" required="">
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                     @if ($errors->has('password'))
                                         <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
-                                    <input class="{{$errors->has('password') ? ' is-invalid' : ''}}" type="password" name="password" placeholder="Password" required="">
+                                    <input class="{{$errors->has('password') ? ' is-invalid' : ''}}" type="password" name="password" value="{{old('password')}}" placeholder="Password" required="">
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                     @if ($errors->has('retype_password'))
                                         <span class="text-danger">{{ $errors->first('retype_password') }}</span>
                                     @endif
-                                    <input class="{{$errors->has('retype_password') ? ' is-invalid' : ''}}" type="password" name="retype_password" placeholder="Retype Password" required="">
+                                    <input class="{{$errors->has('retype_password') ? ' is-invalid' : ''}}" type="password" name="retype_password" value="{{old('retype_password')}}" placeholder="Retype Password" required="">
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">

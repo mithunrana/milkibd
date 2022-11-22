@@ -16,6 +16,7 @@ use App\Models\ProductAttribute;
 use App\Models\ProductVariation;
 use App\Models\Reviews;
 use Auth;
+use Session;
 class ProductController extends Controller
 {
     public function index(){

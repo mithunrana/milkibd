@@ -39,26 +39,23 @@
                     <div class="contact-info-inner">
                         <div class="single-box">
                             <h3>Opening hours</h3>
-                            <ul class="list clearfix"> 
-                                <li>Daily: 9.30 AM–6.00 PM</li>
-                                <li>Sunday & Holidays: Closed</li>
-                            </ul>
+                            {!! $SettingKey['theme_thigo_opening_our_content'] !!}
                         </div>
                         <div class="single-box">
                             <h3>Contact info</h3>
                             <ul class="list clearfix"> 
-                                <li>77408 Satterfield Motorway Suite <br />469 New Antonetta, BC K3L6P6</li>
-                                <li><a href="mailto:example@info.com">example@info.com</a></li>
-                                <li><a href="tel:6174959400326">(617) 495-9400-326</a></li>
+                                <li>{{ $SettingKey['theme_thigo_address'] }}</li>
+                                <li><a href="mailto:{{ $SettingKey['theme_thigo_email'] }}">{{ $SettingKey['theme_thigo_email'] }}</a></li>
+                                <li><a href="tel:{{ $SettingKey['theme_thigo_hotline'] }}">{{ $SettingKey['theme_thigo_hotline'] }}</a></li>
                             </ul>
                         </div>
                         <div class="single-box">
                             <h3>Social contact</h3>
                             <ul class="social-links clearfix">
-                                <li><a href="contact.html"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="contact.html"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="contact.html"><i class="fab fa-vimeo-v"></i></a></li>
-                                <li><a href="contact.html"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="{{ $SettingKey['theme_thigo_facebook'] }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ $SettingKey['theme_thigo_twitter'] }}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ $SettingKey['theme_thigo_linkedin'] }}"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="{{ $SettingKey['theme_thigo_youtube'] }}"><i class="fab fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>

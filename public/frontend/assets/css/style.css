@@ -638,7 +638,7 @@
   display:none;
   opacity: 0;
   visibility: hidden;
-  background: #e3a087;
+  background: #000000;
   padding: 10px 0px;
   filter: alpha(opacity=0);
   -webkit-transition: all 0.2s ease-out;
@@ -2233,7 +2233,7 @@ div#mCSB_1_container{
 .project-section .owl-nav{
   position: absolute;
   left: -400px;
-  bottom: 100px;
+  bottom: 0px;
 }
 
 .project-section .nav-style-one .owl-nav .owl-prev{
@@ -5166,7 +5166,7 @@ div#mCSB_1_container{
 
 .main-header.style-five .menu-right-content .user-btn a, 
 .main-header.style-five .menu-right-content .cart-btn a{
-  color: #222;
+  color: rgb(255, 255, 255);
 }
 
 .main-header.style-five .menu-right-content .user-btn a:before,
@@ -5197,7 +5197,7 @@ div#mCSB_1_container{
 }
 
 .main-header.style-five .search-box-btn{
-  color: #222;
+  color: rgb(255, 255, 255);
 }
 
 .main-header.style-five .menu-right-content li{
