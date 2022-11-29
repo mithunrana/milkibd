@@ -4,7 +4,11 @@
         <div @if(Route::currentRouteName() != 'home') style="background:#e3a087"  @endif class="header-lower">
             <div class="outer-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="index.html"><img src="{{asset('')}}frontend/assets/images/test2.png" alt=""></a></figure>
+                    <figure class="logo">
+                        <a href="{{route('home')}}">
+                            <img src="{{asset('')}}{{$SettingKey['theme_thigo_logo']}}" alt="">
+                        </a>
+                    </figure>
                 </div>
                 <div class="menu-area">
                     <!--Mobile Navigation Toggler-->
@@ -39,7 +43,7 @@
                             <button class="search-box-btn" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-1.png);" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-Search"></i></button>
                             <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu3">
                                 <div class="form-container">
-                                    <form method="post" action="blog.html">
+                                    <form method="post" action="#">
                                         <div class="form-group">
                                             <input type="search" name="search-field" value="" placeholder="Search...." required="">
                                             <button type="submit" class="search-btn"><span class="fas fa-search"></span></button>
@@ -62,7 +66,11 @@
         <div class="sticky-header">
             <div class="outer-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="index.html"><img src="{{asset('')}}frontend/assets/images/test2.png" alt=""></a></figure>
+                    <figure class="logo">
+                        <a href="{{asset('')}}">
+                            <img src="{{asset('')}}{{$SettingKey['theme_thigo_logo']}}" alt="">
+                        </a>
+                    </figure>
                 </div>
                 <div class="menu-area">
                     <nav class="main-menu clearfix">
@@ -103,25 +111,29 @@
         <div class="close-btn"><i class="fas fa-times"></i></div>
         
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img src="assets/images/logo-3.png" alt="" title=""></a></div>
+            <div class="nav-logo">
+                <a href="{{asset('')}}">
+                    <img src="{{asset('')}}{{$SettingKey['theme_thigo_logo']}}" alt="" title="">
+                </a>
+            </div>
             <div class="menu-outer">
             <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
             </div>
             <div class="contact-info">
                 <h4>Contact Info</h4>
                 <ul>
-                    <li>Chicago 12, Melborne City, USA</li>
-                    <li><a href="tel:+8801682648101">+88 01682648101</a></li>
-                    <li><a href="mailto:info@example.com">info@example.com</a></li>
+                    <li>{{$SettingKey['theme_thigo_address']}}</li>
+                    <li><a href="tel:{{$SettingKey['theme_thigo_hotline']}}">{{$SettingKey['theme_thigo_hotline']}}</a></li>
+                    <li><a href="mailto:info@example.com">{{$SettingKey['theme_thigo_email']}}</a></li>
                 </ul>
             </div>
             <div class="social-links">
                 <ul class="clearfix">
-                    <li><a href="index.html"><span class="fab fa-twitter"></span></a></li>
-                    <li><a href="index.html"><span class="fab fa-facebook-square"></span></a></li>
-                    <li><a href="index.html"><span class="fab fa-pinterest-p"></span></a></li>
-                    <li><a href="index.html"><span class="fab fa-instagram"></span></a></li>
-                    <li><a href="index.html"><span class="fab fa-youtube"></span></a></li>
+                    <li><a href="{{$SettingKey['theme_thigo_twitter']}}"><span class="fab fa-twitter"></span></a></li>
+                    <li><a href="{{$SettingKey['theme_thigo_facebook']}}"><span class="fab fa-facebook-square"></span></a></li>
+                    <li><a href="{{$SettingKey['theme_thigo_linkedin']}}"><span class="fab fa-linkedin-in"></span></a></li>
+                    <li><a href="{{$SettingKey['theme_thigo_instagram']}}"><span class="fab fa-instagram"></span></a></li>
+                    <li><a href="{{$SettingKey['theme_thigo_youtube']}}"><span class="fab fa-youtube"></span></a></li>
                 </ul>
             </div>
         </nav>

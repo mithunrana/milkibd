@@ -20,7 +20,7 @@ use Session;
 class ProductController extends Controller
 {
     public function index(){
-        $ProductList = Products::where('status','Published')->paginate(2);
+        $ProductList = Products::where('status','Published')->paginate(3);
         return view('frontend.products',compact('ProductList'));
     }
 

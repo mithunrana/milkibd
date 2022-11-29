@@ -16,15 +16,15 @@
 
 
 <!--Page Title-->
-<section class="page-title centred" style="background-image: url({{asset('')}}frontend/assets/images/background/page-title.jpg);">
+<section class="page-title centred" style="background-image: url({{asset('')}}frontend/assets/images/background/milki-icecream-background.webp);">
     <div class="auto-container">
         <div class="content-box">
             <div class="title">
-                <h1>Shop Page 1</h1>
+                <h1>{{$CategoryObj->name}}</h1>
             </div>
             <ul class="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
-                <li>Shop 1</li>
+                <li><a href="{{route('home')}}">Home</a></li>
+                <li>{{$CategoryObj->name}}</li>
             </ul>
         </div>
     </div>
@@ -93,12 +93,14 @@
                                                 @break
                                                 @endforeach
                                             @else
-                                                <td>{{$Product->price }}</td>
+                                                <td><img src="{{asset('')}}demo-image.png" width="50" alt="Image"></td>
                                             @endif
                                         </a>
                                     </figure>
-                                    <h5><a href="{{asset('')}}products/{{$Product->permalink }}">{{$Product->name }}</a></h5>
-                                    <p>$50.00</p>
+                                    <h5>
+                                        <a href="{{asset('')}}products/{{$Product->permalink }}">{{$Product->name }}</a>
+                                    </h5>
+                                    <p>@if(Session::has('Currency')) <b>{{ Session::get('Currency')['symbol']}}</b> @endif @if($Product->sale_price == '') 0.00 @else {{$Product->sale_price}}@endif</p>
                                 </div>
                             @endforeach()
                         </div>
@@ -124,8 +126,7 @@
                                 </div>
                             </div>
                             <div class="menu-box">
-                                <a href="shop.html"><i class="icon-Menu"></i></a>
-                                <a href="shop.html"><i class="icon-List-View"></i></a>
+                                <a href="#"><i class="icon-Menu"></i></a>
                             </div>
                         </div>
                     </div>
@@ -135,11 +136,13 @@
                             <div class="shop-block-one">
                                 <div class="inner-box">
                                     <figure class="image-box">
-                                        <img src="{{asset('')}}{{$Product->productFirstImageLongHeightSize($Product->id)}}" alt="">
+                                        <img src="{{asset('')}}{{$Product->productFirstImageLongHeightSize($Product->id)}}" alt="{{$Product->name}}">
                                     </figure>
                                     <div class="lower-content">
-                                        <span class="price-box">{{$Product->sale_price}}</span>
-                                        <h3><a href="shop-details.html">{{$Product->name}}</a></h3>
+                                        <span class="price-box">@if(Session::has('Currency')) <b>{{ Session::get('Currency')['symbol']}}</b> @endif @if($Product->sale_price == '') 0.00 @else {{$Product->sale_price}}@endif</span>
+                                        <h3>
+                                            <a href="{{route('productview',$Product->permalink)}}">{{$Product->name}}</a>
+                                        </h3>
                                         <ul class="rating clearfix">
                                             <li><i class="icon-Star"></i></li>
                                             <li><i class="icon-Star"></i></li>
@@ -147,7 +150,9 @@
                                             <li><i class="icon-Star"></i></li>
                                             <li><i class="icon-Star"></i></li>
                                         </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                                        <div class="cart-btn">
+                                            <a href="{{route('productview',$Product->permalink)}}" class="theme-btn-two">View Now</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

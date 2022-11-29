@@ -20,7 +20,7 @@
 
 
 <!--Page Title-->
-<section class="page-title centred" style="background-image: url({{asset('')}}frontend/assets/images/background/page-title.jpg);">
+<section class="page-title centred" style="background-image: url({{asset('')}}frontend/assets/images/background/milki-icecream-background.webp);">
     <div class="auto-container">
         <div class="content-box">
             <div class="title">

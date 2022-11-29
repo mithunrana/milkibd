@@ -33,7 +33,7 @@
 
     <!-- contact-section -->
     <section class="contact-section alternet-2 sec-pad" style="padding: 30px 0px 120px 0px !important;background-image: url(assets/images/background/contact-3.jpg);">
-        <div style="max-width: 800px;" class="auto-container">
+        <div class="auto-container">
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-6 col-sm-12 info-column">
                     <button class="theme-btn-one" style="width:100%;text-align:left;padding: 17px 20px;" type="submit" >Dashboard</button>

@@ -1,5 +1,5 @@
     <!-- shop-section -->
-    <section class="shop-section" style="background-image: url({{asset('')}}frontend/assets/images/background/shop-1.jpg);">
+    <section class="shop-section" style="background-image: url({{asset('')}}frontend/assets/images/background/milki-ice-cream.jpg);">
         <div class="auto-container">
             <div class="sec-title">
                 <p>Our Shop</p>
@@ -15,7 +15,7 @@
                                 </a>
                             </figure>
                             <div class="lower-content">
-                                <span class="price-box">{{$Product->sale_price}}</span>
+                                <span class="price-box">@if(Session::has('Currency')) <b>{{ Session::get('Currency')['symbol']}}</b> @endif @if($Product->sale_price == '') 0.00 @else {{$Product->sale_price}}@endif</span>
                                 <h3><a href="{{$Product->permalink}}">{{$Product->name}}</a></h3>
                                 <ul class="rating clearfix">
                                     <li><i class="icon-Star"></i></li>

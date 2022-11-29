@@ -1,5 +1,5 @@
     <!-- promotion-section -->
-    <section class="promotion-section sec-pad" style="background-image: url({{asset('')}}frontend/assets/images/background/promotion-1.jpg);">
+    <section class="promotion-section sec-pad" style="background-image: url({{asset('')}}frontend/assets/images/background/vanilla-ice-cream.jpg);">
         <div class="auto-container">
             <div class="sec-title centred">
                 <p>Promotion</p>

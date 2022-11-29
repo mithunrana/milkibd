@@ -7,7 +7,7 @@ use App\Http\Controllers\FrontEnd\CustomerController;
 
 // All Backend route here -----------
 Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
-    Route::get('/admin','AdminController@index')->name('dashboard');
+    //Route::get('/admin','AdminController@index')->name('dashboard');
     
 
     Route::get('/admin/product','ProductController@productsManage')->name('dashboard.product');
@@ -134,6 +134,19 @@ Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
     Route::post('/admin/currency-update/{id}','SetupMasterController@currencyUpdate')->name('dashboard.currency.update');
 
 
+    Route::get('/admin/contact','ContactController@index')->name('dashboard.contact');
+    Route::get('/admin/contact-edit/{id}','ContactController@contactEdit')->name('dashboard.contact.edit');
+    Route::post('/admin/contact-update/{id}','ContactController@contactUpdate')->name('dashboard.contact.update');
+    Route::get('/admin/contact-delete/{id}','ContactController@contactDelete')->name('dashboard.contact.delete');
+    Route::post('/admin/contact-reply/{id}','ContactController@contactReply')->name('dashboard.contact.reply');
+
+
+    Route::get('/admin/newsletter','NewsletterController@index')->name('dashboard.newsletter');
+    Route::get('/admin/newsletter-edit/{id}','NewsletterController@newsletterEdit')->name('dashboard.newsletter.edit');
+    Route::post('/admin/newsletter-update/{id}','NewsletterController@newsletterUpdate')->name('dashboard.newsletter.update');
+    Route::get('/admin/newsletter-delete/{id}','NewsletterController@newsletterDelete')->name('dashboard.newsletter.delete');
+
+
     Route::get('/admin/shipping-method','SetupMasterController@shippingMethod')->name('dashboard.shipping.method');
     Route::get('/admin/shipping-method-add','SetupMasterController@shippingMethodAdd')->name('dashboard.shipping.method.add');
     Route::post('/admin/shipping-method-store','SetupMasterController@shippingMethodStore')->name('dashboard.shipping.method.store');
@@ -184,22 +197,25 @@ Route::group(['namespace'=>'App\Http\Controllers\BackEnd'], function(){
     Route::get('/admin/autogenerate','SettingController@autoGenerate')->name('dashboard.autogenerate');
     Route::get('/admin/setting/options','SettingController@settingOption')->name('dashboard.setting.option');
 
-    Route::post('/admin/setting/generalupdate','SettingController@generalInformationUpdate')->name('dashboard.setting.general.update');
-    Route::post('/admin/setting/logoupdate','SettingController@logoInformationUpdate')->name('dashboard.setting.logo.update');
     Route::post('/admin/setting/socialupdate','SettingController@socialInformationUpdate')->name('dashboard.setting.social.update');
     Route::post('/admin/setting/headerupdate','SettingController@headerlInformationUpdate')->name('dashboard.setting.header.update');
+
     Route::post('/admin/setting/facebookinformationupdate','SettingController@facebookInformationUpdate')->name('dashboard.setting.facebook.update');
     Route::post('/admin/setting/bloginformationupdate','SettingController@blogInformationUpdate')->name('dashboard.setting.blog.update');
+
     Route::post('/admin/setting/ecommerceinformationupdate','SettingController@ecommerceInformationUpdate')->name('dashboard.setting.ecommerce.update');
     Route::post('/admin/setting/homepageinformationupdate','SettingController@homepageInformationUpdate')->name('dashboard.setting.homepage.update');
     Route::post('/admin/setting/cookieinformationupdate','SettingController@cookieInformationUpdate')->name('dashboard.setting.cookie.update');
     
+    Route::post('/admin/setting/generalupdate','SettingController@generalInformationUpdate')->name('dashboard.setting.general.update');
+    Route::post('/admin/setting/logoupdate','SettingController@logoInformationUpdate')->name('dashboard.setting.logo.update');
 
     Route::get('/admin/setting/customjs','SettingController@customJS')->name('dashboard.setting.customjs');
     Route::post('/admin/setting/customjsupdate','SettingController@customJSUpdate')->name('dashboard.setting.customjs.update');
 
     Route::get('/admin/setting/customcss','SettingController@customCSS')->name('dashboard.setting.customcss');
     Route::post('/admin/setting/customcssupdate','SettingController@customCSSUpdate')->name('dashboard.setting.customcss.update');
+    Route::post('/admin/setting/policyupdate','SettingController@policyUpdate')->name('dashboard.setting.policy.update');
 
 
     
@@ -234,11 +250,16 @@ Route::group(['namespace'=>'App\Http\Controllers\FrontEnd'], function(){
 
     Route::get('/product-rating','ProductController@ratingSubmit')->name('product.rating');
 
-    Route::get('/service','Homecontroller@service')->name('service');
+    Route::get('/service','ServiceController@index')->name('service');
     Route::get('/about','Homecontroller@about')->name('about.us');
-
     Route::get('/contact','ContactController@index')->name('contact.us');
     Route::post('/contact','ContactController@sendMail')->name('contact.us.mail');
+    Route::post('/subscribe','NewsletterController@subsCribe')->name('newsletter.subscribe');
+
+    Route::get('/privacy-policy','Homecontroller@PrivacyPolicy')->name('privacy.policy');
+    Route::get('/terms-condition','Homecontroller@TermsCondition')->name('terms.condition');
+    Route::get('/return-refund-policy','Homecontroller@ReturnRefundPolicy')->name('return.refund.policy');
+    Route::get('/online-delivery','Homecontroller@OnlineDelivery')->name('online.delivery');
 
     Route::get('/products','ProductController@index')->name('products');
     Route::get('/products/{url}','ProductController@categoryWiseProducts')->name('category.products');

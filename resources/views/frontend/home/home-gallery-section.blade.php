@@ -1,5 +1,5 @@
     <!-- project-section -->
-    <section class="project-section" style="background-image: url({{asset('')}}frontend/assets/images/background/gallery-1.jpg);">
+    <section class="project-section" style="background-image: url({{asset('')}}frontend/assets/images/background/best-ice-cream-bangladesh.jpg);">
         <div class="auto-container">
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-12 col-sm-12 content-column">

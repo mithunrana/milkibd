@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-lg-8 col-md-6 col-sm-12 form-column">
                     <div class="form-inner">
-                        <h3>Drop us a line</h3>
+                        <h3>Contact With Us</h3>
                         <form method="POST" action="{{url('contact')}}" id="contact-form" class="default-form">
                             @csrf 
                             <div class="row clearfix">

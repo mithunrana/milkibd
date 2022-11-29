@@ -64,6 +64,9 @@
                                 <a style="color:#7a777e;font-weight:bold;" class="nav-link" id="vert-tabs-cookie-tab" data-toggle="pill" href="#vert-tabs-cookie" role="tab" aria-controls="vert-tabs-cookie" aria-selected="false">
                                     <i class="fas fa-cookie-bite"></i> Cookie Consent
                                 </a>
+                                <a style="color:#7a777e;font-weight:bold;" class="nav-link" id="vert-tabs-policy-tab" data-toggle="pill" href="#vert-tabs-policy" role="tab" aria-controls="vert-tabs-policy" aria-selected="false">
+                                    <i class="fas fa-file-contract"></i> Policy
+                                </a>
                             </div>
                         </div>
 
@@ -413,6 +416,32 @@
                                         </form>
                                     </div>
                                 </div>
+
+
+                                <div class="tab-pane fade" id="vert-tabs-policy" role="tabpanel" aria-labelledby="vert-tabs-policy-tab">
+                                    <div class="container">
+                                        <form action="{{route('dashboard.setting.policy.update')}}" method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="terms_and_condition">Terms And Condition:</label>
+                                                <textarea class="form-control summernote-editor" rows="6" id="terms_and_condition" name="terms_and_condition">{{ $SettingKey['terms_and_condition'] }}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="refund_and_return_policy">Refund Return Policy:</label>
+                                                <textarea class="form-control summernote-editor" rows="6" id="refund_and_return_policy" name="refund_and_return_policy">{{ $SettingKey['refund_and_return_policy'] }}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="privacy_policy">Privacy Policy:</label>
+                                                <textarea class="form-control summernote-editor" rows="6" id="privacy_policy" name="privacy_policy">{{ $SettingKey['privacy_policy'] }}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="online_delivery">Online Delivery Policy:</label>
+                                                <textarea class="form-control summernote-editor" rows="6" id="online_delivery" name="online_delivery">{{ $SettingKey['online_delivery'] }}</textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -444,5 +473,9 @@
         var datavalue = $(this).attr('data-value');
         DataID = datavalue;
     });
+
+    $(document).ready(function(){
+        $('.summernote-editor').summernote()
+    })
 </script>
 @endsection()

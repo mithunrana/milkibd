@@ -16,15 +16,15 @@
 
 
 <!--Page Title-->
-<section class="page-title centred" style="background-image: url({{asset('')}}frontend/assets/images/background/page-title.jpg);">
+<section class="page-title centred" style="background-image: url({{asset('')}}frontend/assets/images/background/milki-icecream-background.webp);">
     <div class="auto-container">
         <div class="content-box">
             <div class="title">
-                <h1>Shop Page 1</h1>
+                <h1>THIGO THIGO</h1>
             </div>
             <ul class="bread-crumb clearfix">
-                <li><a href="index.html">Home</a></li>
-                <li>Shop 1</li>
+                <li><a href="{{route('home')}}">Home</a></li>
+                <li>Ice Cream</li>
             </ul>
         </div>
     </div>
@@ -53,29 +53,16 @@
                         <div class="widget-content">
                             <ul class="categories-list clearfix">
                                 @foreach($Categories as $Category)
-                                    <li><a href="{{asset('')}}products/{{$Category->permalink}}">{{$Category->name}}</a></li>
+                                    <li>
+                                        <a href="{{asset('')}}products/{{$Category->permalink}}">{{$Category->name}}</a>
+                                    </li>
                                 @endforeach()
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-widget price-filter">
-                        <div class="widget-title">
-                            <h3>Shop by Price</h3>
-                        </div>
-                        <div class="range-slider clearfix">
-                            <div class="price-range-slider"></div>
-                            <div class="clearfix">
-                                <div class="pull-left">
-                                    <a href="shop-1.html" class="filter-btn">Filter</a>
-                                </div>
-                                <div class="pull-right">
-                                    <p>Price:</p>
-                                    <div class="title"></div>
-                                    <div class="input"><input type="text" class="property-amount" name="field-name" readonly=""></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
+
                     <div class="sidebar-widget post-widget">
                         <div class="widget-title">
                             <h3>Featured Products</h3>
@@ -84,27 +71,30 @@
                             @foreach($FeaturedPoducts as $Product)
                                 <div class="post">
                                     <figure class="image-box">
-                                        <a href="{{asset('')}}products/{{$Product->permalink }}">
+                                        <a href="{{route('productview',$Product->permalink)}}">
                                             @if($Product->productImages->count() > 0)
                                                 @foreach($Product->productImages as $Image)
-                                                <td>
-                                                    <img src="{{asset('')}}{{$Image->urlwithoutextension }}{{$ImageSize[150]}}.{{$Image->extension }}" width="50" alt="Image">
-                                                </td>
-                                                @break
+                                                    <td>
+                                                        <img src="{{asset('')}}{{$Image->urlwithoutextension }}{{$ImageSize[150]}}.{{$Image->extension }}" width="50" alt="Image">
+                                                    </td>
+                                                    @break
                                                 @endforeach
                                             @else
-                                                <td>{{$Product->price }}</td>
+                                                <td><img src="{{asset('')}}demo-image.png" width="50" alt="Image"></td>
                                             @endif
                                         </a>
                                     </figure>
-                                    <h5><a href="{{asset('')}}{{$Product->permalink }}">{{$Product->name }}</a></h5>
-                                    <p>$50.00</p>
+                                    <h5>
+                                        <a href="{{route('productview',$Product->permalink)}}">{{$Product->name }}</a>
+                                    </h5>
+                                    <p>@if(Session::has('Currency')) <b>{{ Session::get('Currency')['symbol']}}</b> @endif @if($Product->sale_price == '') 0.00 @else {{$Product->sale_price}}@endif</p>
                                 </div>
                             @endforeach()
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-9 col-md-12 col-sm-12 content-side">
                 <div class="our-shop">
                     <div class="item-shorting clearfix">
@@ -124,34 +114,37 @@
                                 </div>
                             </div>
                             <div class="menu-box">
-                                <a href="shop.html"><i class="icon-Menu"></i></a>
-                                <a href="shop.html"><i class="icon-List-View"></i></a>
+                                <a href="{{route('products')}}"><i class="icon-Menu"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="row clearfix">
                         @foreach($ProductList as $Product)
-                        <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
-                            <div class="shop-block-one">
-                                <div class="inner-box">
-                                    <figure class="image-box">
-                                        <img src="{{asset('')}}{{$Product->productFirstImageLongHeightSize($Product->id)}}" alt="">
-                                    </figure>
-                                    <div class="lower-content">
-                                        <span class="price-box">{{$Product->sale_price}}</span>
-                                        <h3><a href="shop-details.html">{{$Product->name}}</a></h3>
-                                        <ul class="rating clearfix">
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                            <li><i class="icon-Star"></i></li>
-                                        </ul>
-                                        <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
+                                <div class="shop-block-one">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <img src="{{asset('')}}{{$Product->productFirstImageLongHeightSize($Product->id)}}" alt="{{$Product->name}}">
+                                        </figure>
+                                        <div class="lower-content">
+                                            <span class="price-box">@if(Session::has('Currency')) <b>{{ Session::get('Currency')['symbol']}}</b> @endif @if($Product->sale_price == '') 0.00 @else {{$Product->sale_price}}@endif</span>
+                                            <h3>
+                                                <a href="{{route('productview',$Product->permalink)}}">{{$Product->name}}</a>
+                                            </h3>
+                                            <ul class="rating clearfix">
+                                                <li><i class="icon-Star"></i></li>
+                                                <li><i class="icon-Star"></i></li>
+                                                <li><i class="icon-Star"></i></li>
+                                                <li><i class="icon-Star"></i></li>
+                                                <li><i class="icon-Star"></i></li>
+                                            </ul>
+                                            <div class="cart-btn">
+                                                <a href="{{route('productview',$Product->permalink)}}" class="theme-btn-two">View Now</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach()
                     </div>
                     {{ $ProductList->links('vendor.pagination.custom') }}

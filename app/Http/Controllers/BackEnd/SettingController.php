@@ -7,7 +7,7 @@ use App\Models\Setting;
 
 class SettingController extends Controller
 {
-    public function autoGenerate(){
+public function autoGenerate(){
 
         $Keys = array(
             "activated_plugins"=>"",
@@ -34,8 +34,10 @@ class SettingController extends Controller
             "social_login_github_enable"=>"1",
             "social_login_linkedin_enable"=>"1",
 
+
             "theme-thigo-newsletter_image"=>"eneral/newsletter.jpg",
             "theme-thigo-seo_og_image"=>"43",
+
 
             //Theme General information
             "theme_thigo_site_title"=>"thigo - Laravel Ecommerce system",
@@ -56,11 +58,13 @@ class SettingController extends Controller
             "theme_thigo_facebook_comment_enabled_in_product"=>"1",
             "theme_thigo_opening_our_content"=>"",
 
+
             //Theme Logo information
             "theme_thigo_favicon"=>"demo-image.png",
             "theme_thigo_logo"=>"demo-image.png",
             "theme_thigo_logo_footer"=>"demo-image.png",
             
+
             //Theme Social information
             "theme_thigo_facebook"=>"https://facebook.com",
             "theme_thigo_twitter"=>"https://twitter.com/",
@@ -68,9 +72,11 @@ class SettingController extends Controller
             "theme_thigo_instagram"=>"https://instagram.com/",
             "theme_thigo_linkedin"=>"https://linkedin.com/",
 
+
             //Theme header information
             "theme_thigo_enable_sticky_header"=>"1",
             "theme_thigo_collapsing_product_categories_on_homepage"=>"1",
+
 
             //Theme Facebook Integration  information
             "theme_thigo_facebook_chat_enabled"=>"0",
@@ -79,13 +85,16 @@ class SettingController extends Controller
             "theme_thigo_facebook_app_id"=>"",
             "theme_thigo_facebook_admin"=>"",
 
+
             //Theme custom js information
             "custom_body_js"=>"",
             "header_js"=>"",
             "footer_js"=>"",
 
+
             //Theme custom css information
             "custom_css"=>"",
+
 
             //Theme Blog information
             "theme_thigo_blog_page_id"=>"",
@@ -115,6 +124,13 @@ class SettingController extends Controller
             "theme_thigo_cookie_consent_background_color"=>"#000000",
             "theme_thigo_cookie_consent_text_color"=>"#FFFFFF",
             "theme_thigo_cookie_consent_max_width"=>"#1170",
+
+            
+            //Theme cookie information
+            "terms_and_condition"=>"",
+            "refund_and_return_policy"=>"",
+            "privacy_policy"=>"",
+            "online_delivery" => "", 
             
         );
 
@@ -241,6 +257,15 @@ class SettingController extends Controller
         Setting::where('key','theme_thigo_cookie_consent_text_color')->update(['value'=>$request->theme_thigo_cookie_consent_text_color]);
         Setting::where('key','theme_thigo_cookie_consent_max_width')->update(['value'=>$request->theme_thigo_cookie_consent_max_width]);
         return redirect()->back()->with('message','Cookies Information succesfully updated');
+    }
+
+
+    public function policyUpdate(Request $request){
+        Setting::where('key','terms_and_condition')->update(['value'=>$request->terms_and_condition]);
+        Setting::where('key','refund_and_return_policy')->update(['value'=>$request->refund_and_return_policy]);
+        Setting::where('key','privacy_policy')->update(['value'=>$request->privacy_policy]);
+        Setting::where('key','online_delivery')->update(['value'=>$request->online_delivery]);
+        return redirect()->back()->with('message','Policy Information succesfully updated');
     }
 
 }

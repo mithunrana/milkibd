@@ -40,7 +40,7 @@ class HomeController extends Controller
         $data['OrderProducts'] = OrderProduct::orderBy('id','DESC')->skip(0)->take(3)->get()->unique('product_id');
         $data['OrderProducts2'] = OrderProduct::orderBy('id','DESC')->skip(3)->take(3)->get()->unique('product_id');
 
-        $data['GetServise'] = Service::where('status','Published')->orderBy('order','ASC')->skip(0)->take(4)->get();
+        $data['GetService'] = Service::where('status','Published')->orderBy('order','ASC')->skip(0)->take(4)->get();
         $data['SlideObj'] =  Slider::where('key','home-slider')->first();
 
         return view('frontend.index',$data);
@@ -52,13 +52,26 @@ class HomeController extends Controller
     }
 
 
-    public function service(){
-        return view('frontend.service');
-    }
-
 
     public function login(){
         return view('frontend.login');
+    }
+
+
+    public function PrivacyPolicy(){
+        return view('frontend.privacy-policy');
+    }
+
+    public function TermsCondition(){
+        return view('frontend.terms-and-condition');
+    }
+
+    public function ReturnRefundPolicy(){
+        return view('frontend.return-refund-policy');
+    }
+
+    public function OnlineDelivery(){
+        return view('frontend.online-delivery');
     }
     
 }

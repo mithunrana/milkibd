@@ -28,8 +28,8 @@
                     <h1>Customer Registraion</h1>
                 </div>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="{{asset('')}}">Home</a></li>
-                    <li><a href="{{asset('')}}{{route('customer.register')}}">Customer Registration</a></li>
+                    <li><a href="{{route('home')}}">Home</a></li>
+                    <li><a href="{{route('customer.register')}}">Customer Registration</a></li>
                 </ul>
             </div>
         </div>
@@ -83,17 +83,17 @@
                                     <p style="font-size: 14px;text-align: center!important;">Login with social networks</p>
                                     <ul style="text-align:center;" class="social-icons">
                                         <li style="display: inline-block;list-style: none;margin-bottom: 5px;margin-right: 5px;">
-                                            <a class="social-icon-color facebook" href="http://localhost:8086/auth/facebook">
+                                            <a class="social-icon-color facebook" href="">
                                                 <i style="color:white;background-color:#007bff;padding:12px;" class="icon fab fa-facebook-f"></i>
                                             </a>
                                         </li>
                                         <li style="display: inline-block;list-style: none;margin-bottom: 5px;margin-right: 5px;">
-                                            <a class="social-icon-color facebook" href="http://localhost:8086/auth/facebook">
+                                            <a class="social-icon-color facebook" href="">
                                                 <i style="color:white;background-color:#47b2c7;padding:12px;" class="icon fab fa-twitter"></i>
                                             </a>
                                         </li>
                                         <li style="display: inline-block;list-style: none;margin-bottom: 5px;margin-right: 5px;">
-                                            <a class="social-icon-color facebook" href="http://localhost:8086/auth/facebook">
+                                            <a class="social-icon-color facebook" href="">
                                                 <i style="color:white;background-color:#f16767;padding:12px;" class="icon fab fa-google-plus-g"></i>
                                             </a>
                                         </li>

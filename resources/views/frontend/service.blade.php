@@ -20,11 +20,11 @@
         <div class="auto-container">
             <div class="content-box">
                 <div class="title">
-                    <h1>Elements</h1>
+                    <h1>Service</h1>
                 </div>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.html">Home</a></li>
-                    <li>Service Block 01</li>
+                    <li><a href="{{route('home')}}">Home</a></li>
+                    <li>Service</li>
                 </ul>
             </div>
         </div>
@@ -37,66 +37,25 @@
     <section class="service-section sec-pad centred">
         <div class="auto-container">
             <div class="row clearfix">
-                <div class="col-lg-3 col-md-6 col-sm-12 service-block">
-                    <div class="service-block-one">
-                        <div class="inner-box">
-                            <div class="icon-box wow fadeInDown animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
-                                <i class="icon-Ice-Cream"></i>
-                            </div>
-                            <div class="lower-content wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-                                <h3><a href="index.html">Cone Ice Creams</a></h3>
-                                <p>Accusan enim ipsam voluptam quia voluptas sit aspern odit aut sed quia consequnt.</p>
-                                <div class="btn-box"><a href="index.html">Read More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 service-block">
-                    <div class="service-block-one">
-                        <div class="inner-box">
-                            <div class="icon-box wow fadeInDown animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
-                                <i class="icon-Bread"></i>
-                            </div>
-                            <div class="lower-content wow fadeInUp animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">
-                                <h3><a href="index.html">Fresh Bread</a></h3>
-                                <p>Accusan enim ipsam voluptam quia voluptas sit aspern odit aut sed quia consequnt.</p>
-                                <div class="btn-box"><a href="index.html">Read More</a></div>
+                @foreach($ServiceList as $Service)
+                    <div class="col-lg-3 col-md-6 col-sm-12 service-block">
+                        <div class="service-block-one">
+                            <div class="inner-box">
+                                <div class="icon-box wow fadeInDown animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                    <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
+                                    <i class="icon-Ice-Cream"></i>
+                                </div>
+                                <div class="lower-content wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                    <h3><a href="#">{{$Service->name}}</a></h3>
+                                    <p>{!! $Service->description !!}</p>
+                                    <div class="btn-box">
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 service-block">
-                    <div class="service-block-one">
-                        <div class="inner-box">
-                            <div class="icon-box wow fadeInDown animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
-                                <i class="icon-Cake"></i>
-                            </div>
-                            <div class="lower-content wow fadeInUp animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">
-                                <h3><a href="index.html">Piece Cake</a></h3>
-                                <p>Accusan enim ipsam voluptam quia voluptas sit aspern odit aut sed quia consequnt.</p>
-                                <div class="btn-box"><a href="index.html">Read More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 service-block">
-                    <div class="service-block-one">
-                        <div class="inner-box">
-                            <div class="icon-box wow fadeInDown animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
-                                <div class="bg-layer" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-3.png);"></div>
-                                <i class="icon-Donuts"></i>
-                            </div>
-                            <div class="lower-content wow fadeInUp animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
-                                <h3><a href="index.html">Sweet Donuts</a></h3>
-                                <p>Accusan enim ipsam voluptam quia voluptas sit aspern odit aut sed quia consequnt.</p>
-                                <div class="btn-box"><a href="index.html">Read More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach()
             </div>
         </div>
     </section>
@@ -257,7 +216,7 @@
                             @endif
                             <div class="lower-content">
                                 <span class="price-box">$100</span>
-                                <h3><a href="shop-details.html">{{ $Product->name }}</a></h3>
+                                <h3><a href="{{asset('')}}{{$Product->permalink}}">{{ $Product->name }}</a></h3>
                                 <ul class="rating clearfix">
                                     <li><i class="icon-Star"></i></li>
                                     <li><i class="icon-Star"></i></li>
@@ -265,7 +224,9 @@
                                     <li><i class="icon-Star"></i></li>
                                     <li><i class="icon-Star"></i></li>
                                 </ul>
-                                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Add to cart</a></div>
+                                <div class="cart-btn">
+                                    <a href="{{asset('')}}{{$Product->permalink}}" class="theme-btn-two">View Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -73,7 +73,7 @@
 
           <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="#" class="nav-link nav-link">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            &nbsp <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               <p>
                 &nbsp Ecommerce
                 <i class="fas fa-angle-left right"></i>
@@ -199,15 +199,29 @@
           </li>
 
           <li style="border-bottom:1px solid #484848;" class="nav-item">
-            <a href="{{route('dashboard.slider')}}" class="nav-link">
+            <a href="{{route('dashboard.contact')}}" class="nav-link">
             &nbsp <i class="far fa-envelope"></i> &nbsp
               <p>Contact</p>
             </a>
           </li>
 
           <li style="border-bottom:1px solid #484848;" class="nav-item">
+            <a href="{{route('dashboard.service')}}" class="nav-link">
+            &nbsp <i class="fa fa-tasks"></i> &nbsp
+              <p>Service</p>
+            </a>
+          </li>
+
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
+            <a href="{{route('dashboard.newsletter')}}" class="nav-link">
+            &nbsp <i class="far fa-newspaper"></i> &nbsp
+              <p>Newsletters</p>
+            </a>
+          </li>
+
+          <li style="border-bottom:1px solid #484848;" class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa fa-paint-brush"></i>
+            &nbsp <i class="fa fa-paint-brush"></i> &nbsp
               <p>
                 Appearance <i class="fas fa-angle-left right"></i>
               </p>

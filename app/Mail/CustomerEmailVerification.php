@@ -34,6 +34,6 @@ class CustomerEmailVerification extends Mailable
         $subject = "Email Verification Mail";
         $name = $this->name;
         $token = $this->token;
-        return $this->view('Mail.emailVerificationEmail',compact('name','token'))->subject($subject);
+        return $this->view('Mail.contact-user-send-mail',compact('name','token'))->subject($subject);
     }
 }

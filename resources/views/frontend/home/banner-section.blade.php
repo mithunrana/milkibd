@@ -3,7 +3,7 @@
     <div class="banner-carousel owl-theme owl-carousel owl-dots-none nav-style-one">
         @foreach($SlideObj->slideitems->sortBy('order') as $Slide)
             <div class="slide-item">
-                <div class="image-layer" style="background-image:url({{asset('')}}frontend/assets/images/banner/banner-1.jpg)"></div>
+                <div class="image-layer" style="background-image:url({{asset('')}}{{$Slide->backgroun}})"></div>
                 <div class="anim-icon">
                     <div class="icon icon-1" style="background-image: url({{asset('')}}frontend/assets/images/icons/anim-icon-1.png);"></div>
                     <div class="icon icon-2" style="background-image: url({{asset('')}}frontend/assets/images/icons/anim-icon-2.png);"></div>
@@ -17,11 +17,11 @@
                             <h1>{{$Slide->title}}</h1>
                             <p>{{$Slide->description}}</p>
                             <div class="btn-box">
-                                <a href="{{$Slide->link}}" class="banner-btn">Explore Now</a>
+                                <a href="{{$Slide->link}}" class="banner-btn">{{$Slide->button_text}}</a>
                             </div>
                         </div>
                         <figure class="image-box style-one">
-                            <img src="{{asset('')}}{{$Slide->image}}" alt="">
+                            <img src="{{asset('')}}{{$Slide->image}}" alt="{{$Slide->title}}">
                         </figure>
                     </div>  
                 </div>
@@ -30,3 +30,6 @@
     </div>
 </section>
 <!-- banner-section end -->
+
+
+

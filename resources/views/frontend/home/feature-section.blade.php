@@ -7,7 +7,7 @@
                     <div class="feature-block-one wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
                             <div class="count-box" style="background-image: url({{asset('')}}frontend/assets/images/icons/icon-bg-2.png);">
-                                <h4>01</h4>
+                                <h4>{{ $loop->iteration }}</h4>
                             </div>
                             <div class="inner">
                                 <h4>{{$Feature->name}}</h4>

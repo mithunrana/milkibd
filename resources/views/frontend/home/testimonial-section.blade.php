@@ -51,11 +51,7 @@
     <!-- testimonial-section end -->
 
     <!-- testimonial-style-two -->
-<section class="testimonial-style-two centred" style="background-image: url({{asset('')}}frontend/assets/images/background/testimonial-1.jpg);">
-    <div class="pattern-layer">
-        <div class="pattern-1" style="background-image: url(assets/images/shape/shape-9.png);"></div>
-        <div class="pattern-2" style="background-image: url(assets/images/shape/shape-10.png);"></div>
-    </div>
+<section class="testimonial-style-two centred" style="background-image: url({{asset('')}}frontend/assets/images/background/milki-icecream-testimonials.jpg);">
     <div class="auto-container">
         <div class="inner-box">
             <div class="sec-title">
